@@ -4,26 +4,27 @@ import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
 
 const Map = styled.div`
-  width: 80%;
-  height: 400px;
+  width: 300px;
+  height: 100vh;
   padding: 0px;
   border: 1px solid transparent;
+  position: relative;
 `;
 
 const MapComponentContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  padding: 30px 100px;
+  padding: 30px 20px;
 `;
 
 
 const MapContainer = styled.div`
-  width: 100%;
-  height: 400px;
+  max-width: 100%;
+  height: 800px;
   padding: 0px;
   display: flex;
   border: 1px solid transparent;
-  margin-bott0m: 100px;
+  // margin-bott0m: 100px;
 `;
 
 const PinContainer = styled.div`
@@ -50,7 +51,9 @@ const GoogleMap = () => {
         <Map>
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: `${process.env.REACT_APP_GOOGLE_API}`,
+              // key: `${process.env.REACT_APP_GOOGLE_API}`,
+              key: `${process.env.REACT_APP_GOOGLE_API_DEVELOPMENT}`,
+              
             }}
             defaultCenter={{
               lat: 36,
@@ -58,12 +61,7 @@ const GoogleMap = () => {
             }}
             defaultZoom={13}
           >
-           
-              <PinContainer
-                lat="36"
-                lng="-116"
-              ></PinContainer>
-           
+            <PinContainer lat="36" lng="-116"></PinContainer>
           </GoogleMapReact>
         </Map>
       </MapContainer>
