@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     searchDescription: DataTypes.STRING,
     dateRangeStart: DataTypes.DATE,
     dateRangeEnd: DataTypes.DATE,
-    latitude: DataTypes.STRING,
-    longitude: DataTypes.STRING,
+    latitude: DataTypes.DOUBLE,
+    longitude: DataTypes.DOUBLE,
     notification: DataTypes.BOOLEAN,
     radius: DataTypes.INTEGER
   }, {

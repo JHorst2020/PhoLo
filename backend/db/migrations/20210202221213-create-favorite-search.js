@@ -24,10 +24,10 @@ module.exports = {
         type: Sequelize.DATE,
       },
       latitude: {
-        type: Sequelize.STRING,
+        type: Sequelize.DOUBLE,
       },
       longitude: {
-        type: Sequelize.STRING,
+        type: Sequelize.DOUBLE,
       },
       notification: {
         type: Sequelize.BOOLEAN,
