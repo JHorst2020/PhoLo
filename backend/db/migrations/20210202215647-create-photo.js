@@ -54,6 +54,9 @@ module.exports = {
       photoUrl: {
         type: Sequelize.STRING,
       },
+      photoThumbUrl: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

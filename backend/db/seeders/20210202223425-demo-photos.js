@@ -20,6 +20,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -35,6 +36,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -50,6 +52,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -65,6 +68,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -80,6 +84,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -95,6 +100,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -110,6 +116,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -125,6 +132,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -140,6 +148,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -155,6 +164,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -170,6 +180,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -185,6 +196,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -200,6 +212,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -215,6 +228,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -230,6 +244,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -245,6 +260,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -260,6 +276,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -275,6 +292,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -290,6 +308,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -305,6 +324,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -320,6 +340,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -335,6 +356,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -350,6 +372,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -365,6 +388,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -380,6 +404,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -395,6 +420,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -410,6 +436,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -425,6 +452,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -440,6 +468,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -455,6 +484,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -470,6 +500,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -485,6 +516,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -500,6 +532,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -515,6 +548,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -530,6 +564,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -545,6 +580,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -560,6 +596,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -575,6 +612,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -590,6 +628,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -605,6 +644,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -620,6 +660,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -635,6 +676,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -650,6 +692,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -665,6 +708,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -680,6 +724,7 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
           {
@@ -695,113 +740,10 @@ const faker = require('faker');
             zipcode: faker.address.zipCode(),
             description: faker.lorem.sentences(3),
             photoUrl: faker.image.nature(),
+            photoThumbUrl: faker.image.nature(),
             photoTitle: faker.lorem.word(),
           },
-          {
-            user_id: faker.random.number({ min: 1, max: 3 }),
-            dateTime: faker.date.past(),
-            latitude: faker.address.latitude(),
-            longitude: faker.address.longitude(),
-            locationName: faker.lorem.word(),
-            streetNumber: faker.random.number({ min: 99, max: 20000 }),
-            streetName: faker.address.streetName(),
-            city: faker.address.city(),
-            state: faker.address.stateAbbr(),
-            zipcode: faker.address.zipCode(),
-            description: faker.lorem.sentences(3),
-            photoUrl: faker.image.nature(),
-            photoTitle: faker.lorem.word(),
-          },
-          {
-            user_id: faker.random.number({ min: 1, max: 3 }),
-            dateTime: faker.date.past(),
-            latitude: faker.address.latitude(),
-            longitude: faker.address.longitude(),
-            locationName: faker.lorem.word(),
-            streetNumber: faker.random.number({ min: 99, max: 20000 }),
-            streetName: faker.address.streetName(),
-            city: faker.address.city(),
-            state: faker.address.stateAbbr(),
-            zipcode: faker.address.zipCode(),
-            description: faker.lorem.sentences(3),
-            photoUrl: faker.image.nature(),
-            photoTitle: faker.lorem.word(),
-          },
-          {
-            user_id: faker.random.number({ min: 1, max: 3 }),
-            dateTime: faker.date.past(),
-            latitude: faker.address.latitude(),
-            longitude: faker.address.longitude(),
-            locationName: faker.lorem.word(),
-            streetNumber: faker.random.number({ min: 99, max: 20000 }),
-            streetName: faker.address.streetName(),
-            city: faker.address.city(),
-            state: faker.address.stateAbbr(),
-            zipcode: faker.address.zipCode(),
-            description: faker.lorem.sentences(3),
-            photoUrl: faker.image.nature(),
-            photoTitle: faker.lorem.word(),
-          },
-          {
-            user_id: faker.random.number({ min: 1, max: 3 }),
-            dateTime: faker.date.past(),
-            latitude: faker.address.latitude(),
-            longitude: faker.address.longitude(),
-            locationName: faker.lorem.word(),
-            streetNumber: faker.random.number({ min: 99, max: 20000 }),
-            streetName: faker.address.streetName(),
-            city: faker.address.city(),
-            state: faker.address.stateAbbr(),
-            zipcode: faker.address.zipCode(),
-            description: faker.lorem.sentences(3),
-            photoUrl: faker.image.nature(),
-            photoTitle: faker.lorem.word(),
-          },
-          {
-            user_id: faker.random.number({ min: 1, max: 3 }),
-            dateTime: faker.date.past(),
-            latitude: faker.address.latitude(),
-            longitude: faker.address.longitude(),
-            locationName: faker.lorem.word(),
-            streetNumber: faker.random.number({ min: 99, max: 20000 }),
-            streetName: faker.address.streetName(),
-            city: faker.address.city(),
-            state: faker.address.stateAbbr(),
-            zipcode: faker.address.zipCode(),
-            description: faker.lorem.sentences(3),
-            photoUrl: faker.image.nature(),
-            photoTitle: faker.lorem.word(),
-          },
-          {
-            user_id: faker.random.number({ min: 1, max: 3 }),
-            dateTime: faker.date.past(),
-            latitude: faker.address.latitude(),
-            longitude: faker.address.longitude(),
-            locationName: faker.lorem.word(),
-            streetNumber: faker.random.number({ min: 99, max: 20000 }),
-            streetName: faker.address.streetName(),
-            city: faker.address.city(),
-            state: faker.address.stateAbbr(),
-            zipcode: faker.address.zipCode(),
-            description: faker.lorem.sentences(3),
-            photoUrl: faker.image.nature(),
-            photoTitle: faker.lorem.word(),
-          },
-          {
-            user_id: faker.random.number({ min: 1, max: 3 }),
-            dateTime: faker.date.past(),
-            latitude: faker.address.latitude(),
-            longitude: faker.address.longitude(),
-            locationName: faker.lorem.word(),
-            streetNumber: faker.random.number({ min: 99, max: 20000 }),
-            streetName: faker.address.streetName(),
-            city: faker.address.city(),
-            state: faker.address.stateAbbr(),
-            zipcode: faker.address.zipCode(),
-            description: faker.lorem.sentences(3),
-            photoUrl: faker.image.nature(),
-            photoTitle: faker.lorem.word(),
-          },
+          
         ],
         {}
       );

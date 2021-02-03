@@ -16,13 +16,6 @@ const MapComponentContainer = styled.div`
   padding: 30px 100px;
 `;
 
-const Header = styled.span`
-  font-size: 1rem;
-  color: #999;
-  font-weight: 700;
-  margin-right: 20px;
-  margin-top: 20px;
-`;
 
 const MapContainer = styled.div`
   width: 100%;
