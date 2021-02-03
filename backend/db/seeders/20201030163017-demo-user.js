@@ -12,6 +12,9 @@ module.exports = {
           username: "Demo-lition",
           profileImageUrl:
             "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png",
+          firstName: "Demo",
+          lastName: "Lition",
+          phoneNumber: 16052285633,
           hashedPassword: bcrypt.hashSync("password"),
         },
         {
@@ -19,6 +22,9 @@ module.exports = {
           username: "FakeUser1",
           profileImageUrl:
             "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png",
+          firstName: "FakerFirst1",
+          lastName: "FakerLast1",
+          phoneNumber: 16052285634,
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
         },
         {
@@ -26,6 +32,9 @@ module.exports = {
           username: "FakeUser2",
           profileImageUrl:
             "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png",
+          firstName: "FakerFirst2",
+          lastName: "FakerFirst3",
+          phoneNumber: 16052285635,
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
         },
       ],

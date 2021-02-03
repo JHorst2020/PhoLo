@@ -14,13 +14,23 @@ module.exports = {
         unique: true,
       },
       email: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.STRING(255),
         allowNull: false,
         unique: true,
       },
       profileImageUrl: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.STRING(255),
         allowNull: false,
+      },
+      firstName: {
+        type: Sequelize.STRING(255)
+      },
+      lastName: {
+        type: Sequelize.STRING(255)
+      },
+      phoneNumber: {
+        type: Sequelize.BIGINT,
+        unique:true,
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,

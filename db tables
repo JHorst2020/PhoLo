@@ -1,0 +1,9 @@
+npx sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string,phoneNumber:integer,username:string,hashedPassword:binary,profileImageUrl:string
+
+npx sequelize model:generate --name Photo --attributes user_id:integer,dateTime:date,latitude:string,longitude:string,locationName:string,streetNumber:string,streetname:string,city:string,state:string,zipcode:string,description:string,photoTitle:string
+
+npx sequelize model:generate --name PhotoTag --attributes user_id:integer,photo_id:integer,tagName:string
+
+npx sequelize model:generate --name Bookmarks --attributes user_id:integer,photo_id:integer
+
+npx sequelize model:generate --name FavoriteSearch --attributes user_id:integer,searchDescription:string,dateRangeStart:date,dateRangeEnd:date,latitude:string,longitude:string,notification:boolean,radius:integer

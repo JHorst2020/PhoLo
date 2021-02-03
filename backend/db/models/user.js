@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         return await User.scope("currentUser").findByPk(user.id);
       }
     }
-    static async signup({ username, email, password, profileImageUrl }) {
+    static async signup({ username, email, password, profileImageUrl, firstName, lastName, phoneNumber }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
         username,
@@ -45,6 +45,10 @@ module.exports = (sequelize, DataTypes) => {
     }
     static associate(models) {
       // define association here
+      User.hasMany(models.Photo, {foreignKey:"user_id"})
+      User.hasMany(models.FavoriteSearch, {foreignKey:"user_id"})
+      User.hasMany(models.PhotoTag, {foreignKey:"user_id"})
+      User.hasMany(models.Bookmark, {foreignKey:"user_id"})
     }
   }
   User.init(
@@ -71,6 +75,16 @@ module.exports = (sequelize, DataTypes) => {
       profileImageUrl: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      firstName: {
+        type: DataTypes.STRING,
+      },
+      lastName: {
+        type: DataTypes.STRING,
+      },
+      phoneNumber: {
+        type: DataTypes.INTEGER,
+        unique: true,
       },
       hashedPassword: {
         type: DataTypes.STRING.BINARY,
