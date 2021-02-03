@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { createUser } from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
+import NumberFormat from "react-number-format";
 
 const CreateUser = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [image, setImage] = useState(null);
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [phoneNumberString, setPhoneNumberString] = useState("")
   // for multuple file upload
   //   const [images, setImages] = useState([]);
   const [errors, setErrors] = useState([]);
@@ -16,13 +20,20 @@ const CreateUser = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let phoneNumber = parseInt(phoneNumberString)
+    // console.log(phoneNumber)
+    // console.log(typeof phoneNumber)
+    
     let newErrors = [];
-    dispatch(createUser({ username, email, password, image }))
+    dispatch(createUser({ username, email, password, image, firstName, lastName, phoneNumber}))
       .then(() => {
         setUsername("");
         setEmail("");
         setPassword("");
         setImage(null);
+        setFirstName("");
+        setLastName("");
+        setPhoneNumberString();
       })
       .catch((res) => {
         if (res.data && res.data.errors) {
@@ -31,6 +42,14 @@ const CreateUser = () => {
         }
       });
   };
+
+// Picks out specific values from the formatted phone number
+// "+1 (###) ###-####"
+const lazyphone = (e) => {
+  setPhoneNumberString(e[1].concat(e[4],e[5],e[6],e[9],e[10],e[11],e[13],e[14],e[15],e[16]))
+}
+
+
 
   const updateFile = (e) => {
     const file = e.target.files[0];
@@ -55,6 +74,22 @@ const CreateUser = () => {
         <label>
           <input
             type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </label>
+        <label>
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </label>
+        <label>
+          <input
+            type="text"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -76,6 +111,7 @@ const CreateUser = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
+        <NumberFormat format="+1 (###) ###-####" allowEmptyFormatting mask="_" onChange={(e) => lazyphone(e.target.value)}/>
         <label>
           <input type="file" onChange={updateFile} />
         </label>

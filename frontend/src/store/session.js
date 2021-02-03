@@ -26,11 +26,14 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const createUser = (user) => async (dispatch) => {
-  const { images, image, username, email, password } = user;
+  const { images, image, username, email, password, firstName, lastName, phoneNumber} = user;
   const formData = new FormData();
   formData.append("username", username);
   formData.append("email", email);
   formData.append("password", password);
+  formData.append("firstName",firstName);
+  formData.append("lastName", lastName);
+  formData.append("phoneNumber", phoneNumber);
 
   // for multiple files
   if (images && images.length !== 0) {
