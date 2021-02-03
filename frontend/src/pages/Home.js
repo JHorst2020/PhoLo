@@ -1,3 +1,12 @@
-const Home = () => <div>Home component!</div>;
+import GoogleMap from "../components/GoogleMap"
+
+const Home = () => {
+    
+return (
+    <>
+<div>Home component!</div>
+<GoogleMap />
+</>
+)}
 
 export default Home;

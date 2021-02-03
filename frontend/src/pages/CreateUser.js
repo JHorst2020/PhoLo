@@ -17,6 +17,7 @@ const CreateUser = () => {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  console.log(process.env.REACT_APP_GOOGLE_API);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,7 +49,6 @@ const CreateUser = () => {
 const lazyphone = (e) => {
   setPhoneNumberString(e[1].concat(e[4],e[5],e[6],e[9],e[10],e[11],e[13],e[14],e[15],e[16]))
 }
-
 
 
   const updateFile = (e) => {
