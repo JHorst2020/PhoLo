@@ -5,5 +5,5 @@ npx sequelize model:generate --name Photo --attributes user_id:integer,dateTime:
 npx sequelize model:generate --name PhotoTag --attributes user_id:integer,photo_id:integer,tagName:string
 
 npx sequelize model:generate --name Bookmarks --attributes user_id:integer,photo_id:integer
-
+ 
 npx sequelize model:generate --name FavoriteSearch --attributes user_id:integer,searchDescription:string,dateRangeStart:date,dateRangeEnd:date,latitude:string,longitude:string,notification:boolean,radius:integer
