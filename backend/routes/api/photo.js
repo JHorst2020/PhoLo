@@ -15,14 +15,16 @@ router.get("/", asyncHandler(async (req, res) => {
 }))
 
 router.get(
-  "/:searchLat/:searchLng/:radius",
+  "/:searchLat/:searchLng/:radius/:dateRangeStart/:dateRangeEnd",
   asyncHandler(async (req, res) => {
     
     
     let searchLat = parseInt(req.params.searchLat)
     let searchLng = parseInt(req.params.searchLng)
     let radius = parseInt(req.params.radius)
-    console.log(typeof searchLat, typeof searchLng, radius)
+    let dateRangeStart = req.params.dateRangeStart
+    let dateRangeEnd = req.params.dateRangeEnd
+    console.log(typeof searchLat, typeof searchLng, radius, dateRangeStart, dateRangeEnd)
     const nearbyPhotos = await Photo.findAll({
         where: {
             latitude: {
@@ -30,6 +32,9 @@ router.get(
             },
             longitude: {
                 [Op.between] : [searchLng-radius, searchLng+radius]
+            },
+            dateTime: {
+                [Op.between] : [dateRangeStart, dateRangeEnd]
             }
         },
         // attributes: ["photoThumbUrl"],
