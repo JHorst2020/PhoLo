@@ -17,7 +17,7 @@ const CreateUser = () => {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  console.log(process.env.REACT_APP_GOOGLE_API);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

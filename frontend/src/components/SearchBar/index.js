@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {searchByLocation, changeSearchDateRange} from "../../store/photo"
 import {useDispatch, useSelector} from "react-redux"
 import search from "./search.svg"
+import  AddPhotoModal  from "../AddPhotoModal";
+
 
 
 
@@ -33,6 +35,10 @@ const SearchBar = () => {
                 <input type="date" className="search-bar" placeholder="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} />
                 <button className="search-button"><img src={search} alt="search" className="search" /></button>
             </form>
+            <div className="custom-search-button-container">
+                <button className="add-photo-button">Add Photo</button>
+            </div>
+            <AddPhotoModal />
         </div>
     )
 
