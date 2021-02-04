@@ -1,25 +1,23 @@
-import GoogleMap from "../components/GoogleMap"
-import ImageThumb from "../components/ImageThumb"
-import SearchBar from "../components/SearchBar"
+import GoogleMap from "../components/GoogleMap";
+import ImageThumb from "../components/ImageThumb";
+import SearchBar from "../components/SearchBar";
 
 const Home = () => {
-    
-return (
+  return (
     <>
-<div>Home component!</div>
-<SearchBar />
-<div className="Home__home-container">
-<div>
+      <div>Home component!</div>
+      <SearchBar />
+      <div className="Home__home-container">
+        <div>
+          <GoogleMap />
+        </div>
 
-<GoogleMap />
-</div>
- 
-    <div>
-<ImageThumb />
-    </div>
-</div>
-
-</>
-)}
+        <div>
+          <ImageThumb />
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Home;

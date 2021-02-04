@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import {searchByLocation, changeSearchDateRange} from "../../store/photo"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import search from "./search.svg"
 
 
 
 
 const SearchBar = () => {
+    const radius = useSelector((state) => state.photo.searchLocation[2])
     const dispatch = useDispatch()
     const [location, setLocation] = useState("")
     const [dateRangeStart, setDateRangeStart] = useState("")
@@ -14,7 +15,13 @@ const SearchBar = () => {
     
     const submitForm = async(e) => {
         e.preventDefault()
-
+        const payload = {location, radius, searchDateRange: [dateRangeStart, dateRangeEnd] }
+        setLocation("")
+        setDateRangeStart("")
+        setDateRangeEnd("")
+        
+        dispatch(searchByLocation(payload))
+        
     }
 
     return (
@@ -22,8 +29,8 @@ const SearchBar = () => {
             <form onSubmit={submitForm}>
                 
                 <input className="search-bar" placeholder="Where?" value={location} onChange={(e) => setLocation(e.target.value)} />
-                <input type="date" className="search-bar" placeHolder="Start Date" value={dateRangeStart} onChange={(e)=> setDateRangeStart(e.target.value)} />
-                <input type="date" className="search-bar" placeHolder="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} />
+                <input type="date" className="search-bar" placeholder="Start Date" value={dateRangeStart} onChange={(e)=> setDateRangeStart(e.target.value)} />
+                <input type="date" className="search-bar" placeholder="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} />
                 <button className="search-button"><img src={search} alt="search" className="search" /></button>
             </form>
         </div>

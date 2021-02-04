@@ -16,11 +16,7 @@ const ImageThumb = () => {
         console.log(payload)
         dispatch(getNearbyPhotos(payload))
     }, [])
-    // useEffect(() => {
-    //     let payload = {searchLat: searchLocation[0], searchLng: searchLocation[1], radius: searchLocation[2]}
-    //     // let payload = {searchLat: 87, searchLng: -84, radius: 3}
-    //     dispatch(getNearbyPhotos(payload))
-    // }, [])
+    
 return (
   <>
     <div className="ImageThumb__photo-container">
