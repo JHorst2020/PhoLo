@@ -16,6 +16,7 @@ const AddPhotoModal = () => {
   // const user_id = useSelector((state) => state.session.user.id)
   const currentUser = useSelector((state) => state.session)
   const photoData = useSelector((state) => state.photo.uploadedPhotoExif)
+  const currentLocations = useSelector((state) => state.photo.locations)
   // console.log("this is the user_ID:     ", user_id)
 
   
@@ -41,7 +42,7 @@ const AddPhotoModal = () => {
       const dateTime = photoData.photoDate
       const image = photoData.image
               
-      dispatch(addNewPhoto({latitude, longitude, dateTime, image, user_id}))
+      dispatch(addNewPhoto({latitude, longitude, dateTime, image, user_id, currentLocations}))
 
   }
 

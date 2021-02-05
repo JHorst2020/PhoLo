@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useDispatch, useSelector } from "react-redux";
 import "./MapPin.css"
+import {updateSearchCoord} from "../../store/photo"
 
 
 // const PinContainer = styled.div`
@@ -16,12 +17,26 @@ import "./MapPin.css"
 // `;
 
 
-const MapPin = () => {
-   
+const MapPin = ({id, photoUrl, lat, lng}) => {
+    const dispatch = useDispatch()
+    const showInfoBox = () => document.getElementById(`info-box-${id}`).removeAttribute('hidden')
+    // const showInfoBox = () => console.log(document.getElementById(`info-box-${id}`))
+    // const hideInfoBox = () => console.log("hide info box")
+    const hideInfoBox = () => document.getElementById(`info-box-${id}`).setAttribute("hidden", "")
+    // const pinClick = () => {
+    //     const payload = {location: [lat, lng]}
+    //     dispatch(updateSearchCoord(payload))
+    // }
     
     return (
         <>
-            <div className="mapPin"></div>
+                
+            <div className="mapPin" onMouseOver={showInfoBox} onMouseOut={hideInfoBox} >
+                
+            </div>
+            <div id={`info-box-${id}`} hidden >
+                <img className="map-info-box" src={photoUrl} alt="noPhoto"></img>
+            </div>
         </>
     )
 

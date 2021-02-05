@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import MapPin from "./MapPin.js"
+import {updateMapBounds} from "../../store/map"
 
 const Map = styled.div`
-  width: 300px;
+  width: 500px;
   height: 100vh;
   padding: 0px;
   border: 1px solid transparent;
@@ -30,13 +31,26 @@ const MapContainer = styled.div`
 
 const GoogleMap = () => {
   // const locationMarks = useSelector((state) => state.locations.locationlist);
-
+  const dispatch = useDispatch()
   let lat = useSelector((state) => state.photo.searchLocation[0]);
   let lng = useSelector((state) => state.photo.searchLocation[1]);
   let radius = useSelector((state) => state.photo.searchLocation[2])
   let locations = useSelector((state) => state.photo.locations);
   let radiusToZoom = Math.round(14-Math.log(radius)/Math.LN2)
-
+  let latBounds
+  let lngBounds
+  let center
+  const handleMapChange = (e) => {
+    console.log(e)
+    latBounds = Math.abs((e.marginBounds.sw.lat - e.marginBounds.ne.lat));
+    lngBounds = Math.abs((e.marginBounds.sw.lng - e.marginBounds.ne.lng));
+    center = e.center
+    dispatch(updateMapBounds({mapBounds: [latBounds, lngBounds], mapFocus: center}))
+  }
+  // useEffect(() => {
+  //   let payload = {payload: [latBounds, lngBounds]}
+  //   dispatch(updateMapBounds(payload))
+  // }, [lng])
   return (
     <MapComponentContainer>
       <MapContainer>
@@ -51,9 +65,11 @@ const GoogleMap = () => {
               lat: lat,
               lng: lng,
             }}
-            defaultZoom={radiusToZoom}
+            zoom={radiusToZoom}
+            onChange={handleMapChange}
+            
           >
-            {locations.map(location => (<MapPin lat={location.latitude} lng={location.longitude} />)
+            {locations.map(location => (<MapPin key={location.id} id={location.id} lat={location.latitude} lng={location.longitude} photoUrl={location.photoUrl} />)
             )}
           </GoogleMapReact>
         </Map>

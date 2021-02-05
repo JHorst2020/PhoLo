@@ -16,31 +16,36 @@ router.get("/", asyncHandler(async (req, res) => {
 }))
 
 router.get(
-  "/:searchLat/:searchLng/:radius/:dateRangeStart/:dateRangeEnd",
+  "/:searchLat/:searchLng/:radius/:dateRangeStart/:dateRangeEnd/:latBounds/:lngBounds",
   asyncHandler(async (req, res) => {
     
     
-    let searchLat = parseInt(req.params.searchLat)
-    let searchLng = parseInt(req.params.searchLng)
-    let radius = parseInt(req.params.radius)
+    let searchLat = parseFloat(req.params.searchLat)
+    let searchLng = parseFloat(req.params.searchLng)
+    // let radius = parseInt(req.params.radius)
+    let latBounds = parseFloat(req.params.latBounds)
+    let lngBounds = parseFloat(req.params.lngBounds)
     let dateRangeStart = req.params.dateRangeStart
     let dateRangeEnd = req.params.dateRangeEnd
-    console.log(typeof searchLat, typeof searchLng, radius, dateRangeStart, dateRangeEnd)
+
+    // if (searchLat < 0) parseFloat(latBounds*=(-1))
+    // if (searchLng < 0) parseFloat(lngBounds*=(-1))
+    console.log(searchLat, searchLng, dateRangeStart, dateRangeEnd, latBounds, lngBounds)
     const nearbyPhotos = await Photo.findAll({
-        where: {
-            latitude: {
-                [Op.between] : [searchLat-radius,searchLat+radius]
-            },
-            longitude: {
-                [Op.between] : [searchLng-radius, searchLng+radius]
-            },
-            dateTime: {
-                [Op.between] : [dateRangeStart, dateRangeEnd]
-            }
+      where: {
+        latitude: {
+          [Op.between]: [searchLat - latBounds, searchLat + latBounds],
         },
-        // attributes: ["photoThumbUrl"],
-        order: [["dateTime","DESC"]]
-    })
+        longitude: {
+          [Op.between]: [searchLng - lngBounds, searchLng + lngBounds],
+        },
+        dateTime: {
+          [Op.between]: [dateRangeStart, dateRangeEnd],
+        },
+      },
+      // attributes: ["photoThumbUrl"],
+      order: [["dateTime", "DESC"]],
+    });
     res.json(nearbyPhotos)
   })
 );
