@@ -1,7 +1,8 @@
-import React, { Component, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import MapPin from "./MapPin.js"
 
 const Map = styled.div`
   width: 300px;
@@ -27,23 +28,14 @@ const MapContainer = styled.div`
   // margin-bott0m: 100px;
 `;
 
-const PinContainer = styled.div`
-  background-color: #3f51b5;
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
-  border: 3px solid #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-`;
-
 const GoogleMap = () => {
-//   const locationMarks = useSelector((state) => state.locations.locationlist);
+  // const locationMarks = useSelector((state) => state.locations.locationlist);
 
-//   let latitude = useSelector((state) => state.locations.searchLocation[0]);
-//   let longitude = useSelector((state) => state.locations.searchLocation[1]);
+  let lat = useSelector((state) => state.photo.searchLocation[0]);
+  let lng = useSelector((state) => state.photo.searchLocation[1]);
+  let radius = useSelector((state) => state.photo.searchLocation[2])
+  let locations = useSelector((state) => state.photo.locations);
+  let radiusToZoom = Math.round(14-Math.log(radius)/Math.LN2)
 
   return (
     <MapComponentContainer>
@@ -56,12 +48,13 @@ const GoogleMap = () => {
               
             }}
             defaultCenter={{
-              lat: 36,
-              lng: -116,
+              lat: lat,
+              lng: lng,
             }}
-            defaultZoom={13}
+            defaultZoom={radiusToZoom}
           >
-            <PinContainer lat="36" lng="-116"></PinContainer>
+            {locations.map(location => (<MapPin lat={location.latitude} lng={location.longitude} />)
+            )}
           </GoogleMapReact>
         </Map>
       </MapContainer>

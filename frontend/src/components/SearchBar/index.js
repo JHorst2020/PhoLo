@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import {searchByLocation, changeSearchDateRange} from "../../store/photo"
+import { searchByLocation, photoExifData } from "../../store/photo";
 import {useDispatch, useSelector} from "react-redux"
 import search from "./search.svg"
-import  AddPhotoModal  from "../AddPhotoModal";
+import  AddPhotoModal from "../AddPhotoModal";
+// import  ImageMeta from "../AddPhotoModal/ExifExtract";
 
 
 
@@ -23,6 +24,9 @@ const SearchBar = () => {
         setDateRangeEnd("")
         
         dispatch(searchByLocation(payload))
+        //todo NEED TO DELETE THIS
+        // dispatch(photoExifData())
+        
         
     }
 
@@ -35,10 +39,13 @@ const SearchBar = () => {
                 <input type="date" className="search-bar" placeholder="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} />
                 <button className="search-button"><img src={search} alt="search" className="search" /></button>
             </form>
-            <div className="custom-search-button-container">
-                <button className="add-photo-button">Add Photo</button>
+            <div>
+                {/* <button>Choose File<ImageMeta /></button> */}
+                {/* <ImageMeta /> */}
             </div>
+            <div className="custom-search-button-container">
             <AddPhotoModal />
+            </div>
         </div>
     )
 

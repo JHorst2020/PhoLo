@@ -3,6 +3,7 @@ const { Op } = require("sequelize")
 const asyncHandler = require("express-async-handler")
 
 const {Photo, User} = require("../../db/models")
+const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multiplePublicFileUpload} = require("../../awsS3");
 
 const router = express.Router();
 
@@ -43,5 +44,22 @@ router.get(
     res.json(nearbyPhotos)
   })
 );
+
+router.post('/add',
+singleMulterUpload("image"),
+asyncHandler( async (req, res) => {
+    const { latitude, longitude, dateTime, user_id } = req.body;
+    const photoUrl = await singlePublicFileUpload(req.file)
+    const newPhoto = await Photo.create({ 
+        latitude,
+        longitude,
+        dateTime,
+        user_id,
+        photoUrl,
+    })
+    res.json(newPhoto)
+})
+
+)
 
 module.exports = router

@@ -34,7 +34,7 @@ const CreateUser = () => {
         setImage(null);
         setFirstName("");
         setLastName("");
-        setPhoneNumberString();
+        setPhoneNumberString("");
       })
       .catch((res) => {
         if (res.data && res.data.errors) {
