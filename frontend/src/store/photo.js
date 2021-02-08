@@ -1,4 +1,4 @@
-import { fetch as fetchy } from "../util/csrf.js"; //I ALWAYS FORGET ABOUT THIS
+import { fetch as fetchy } from "../util/csrf.js"; //Aliased otherwise it screws up the fetch for google
 export const LOAD_NEARBY_PHOTOS = "./photo/LOAD_NEARBY_PHOTOS";
 export const LOAD_SEARCH_INFO = "./photo/LOAD_SEARCH_INFO";
 export const EXTRACT_EXIF_DATA = "./photo/EXTRACT_EXIF_DATA";
@@ -25,6 +25,14 @@ const updateCoords = (searchLocation) => ({
   type: UPDATE_SEARCH_COORDS,
   searchLocation
 })
+
+
+
+export const updateImagePreview = (payload) => async(dispatch) => {
+  const {url} = payload
+  dispatch(photoExif(url))
+}
+
 export const getNearbyPhotos = (payload) => async (dispatch) => {
   const {
     searchLat,
@@ -52,7 +60,7 @@ export const updateSearchCoord = (payload) => async(dispatch) => {
 }
 
 export const searchByLocation = (payload) => async (dispatch) => {
-  const { location, radius, searchDateRange } = payload;
+  const { location, radius, searchDateRange, latBounds, lngBounds } = payload;
   let spaceRemover = location.split(" ").join("+");
   const res = await fetch(
     `https://maps.googleapis.com/maps/api/geocode/json?address=${spaceRemover}&key=${process.env.REACT_APP_GOOGLE_API}`
@@ -63,7 +71,7 @@ export const searchByLocation = (payload) => async (dispatch) => {
   let dateRangeStart = searchDateRange[0];
   let dateRangeEnd = searchDateRange[1];
   const response = await fetch(
-    `/api/photo/${searchLat}/${searchLng}/${radius}/${dateRangeStart}/${dateRangeEnd}`
+    `/api/photo/${searchLat}/${searchLng}/${radius}/${dateRangeStart}/${dateRangeEnd}/${latBounds}/${lngBounds}`
   );
 
   if (response.ok) {
@@ -93,14 +101,22 @@ export const addNewPhoto = (photo) => async (dispatch) => {
     },
     body: formData,
   });
-  // console.log(res);
-  // dispatch(loadNearbyPhotos(currentLocations))
 };
+export const updatePhoto = (payload) => async(dispatch) => {
+  const res = await fetchy ("/api/photo/update", {
+    method: "PUT",
+    headers: {
+      'Content-type' : "application/json"
+    },
+    body: JSON.stringify(payload)
+  })
+console.log(payload)
+}
 
 export const photoExifData = (exifDataPayload) => async (dispatch) => {
-  const { latitude, longitude, photoDate, image } = exifDataPayload;
+  const { latitude, longitude, photoDate, image, url } = exifDataPayload;
   console.log(exifDataPayload);
-  const uploadedPhotoExif = { latitude, longitude, photoDate, image };
+  const uploadedPhotoExif = { latitude, longitude, photoDate, image};
   dispatch(photoExif(uploadedPhotoExif));
 };
 
@@ -108,11 +124,12 @@ const initialState = {
   locations: [],
   searchLocation: [36.1699, -115.1398, 3],
   searchDateRange: ["1950-01-01", "2029-01-01"],
-  uploadedPhotoExif: null,
+  // uploadedPhotoExif: {latitude: "", longitude:"", photoDate: "", image:"", url:""},
+  uploadedPhotoExif: {},
 };
 
 const photoReducer = (state = initialState, action) => {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case EXTRACT_EXIF_DATA: {
       return {

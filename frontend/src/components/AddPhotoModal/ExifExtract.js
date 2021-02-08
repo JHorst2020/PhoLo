@@ -1,19 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import EXIF from "exif-js";
 import {useDispatch} from "react-redux"
-import {photoExifData} from "../../store/photo";
+import { photoExifData, updateImagePreview } from "../../store/photo";
 
 function ImageMeta() {
     const dispatch = useDispatch();
-
+    const [url, setUrl] = useState("")
   const handleChange = ({
     target: {
       files: [file],
     },
   }) => {
-            
+
     if (file && file.name) {
       EXIF.getData(file, function () {
+
         var exifData = EXIF.pretty(this);
         if (exifData) {
           let spaceIndex = EXIF.getTag(this, "DateTimeOriginal").indexOf(" ")
@@ -37,7 +38,7 @@ function ImageMeta() {
           let image = file
           const payload = {latitude, longitude, photoDate, image}
           dispatch(photoExifData(payload))
-          
+          // console.log(url)
           
             // dispatch(photoExifData({latitude: 39, longitude: -119, photoDate:"2021-01-01"}))
           
@@ -49,16 +50,16 @@ function ImageMeta() {
   }
 
   return (
-      <> 
- 
-    <input
-      type="file"
-      id="file"
-      accept=".jpg, .png, .heif, .heic"
-      onChange={handleChange}
-      hidden
-    />
-      </>
+    <>
+      <input
+        type="file"
+        id="file"
+        accept=".jpg, .png, .heif, .heic"
+        onChange={handleChange}
+        hidden
+      />
+    
+    </>
   );
 }
 

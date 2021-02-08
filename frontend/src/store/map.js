@@ -18,7 +18,7 @@ const initialState = {
 }
 
 const mapReducer = (state = initialState, action) => {
-    console.log(action)
+    // console.log(action)
     switch (action.type) {
         case MAP_BOUNDS: {
             return {

@@ -50,10 +50,39 @@ router.get(
   })
 );
 
+router.put("/update", asyncHandler (async (req, res) => {
+  const {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = req.body
+  console.log(req.body)
+  const updatedPhoto = await Photo.update({
+    city: city,
+    locationName: locationName,
+    photoUrl: photoUrl,
+    photoThumbUrl: photoThumbUrl,
+    state: state,
+    streetName: streetName,
+    streetNumber: streetNumber,
+    dateTime: updateDate,
+    description: updateDescription,
+    latitude: updateLat,
+    longitude: updateLng,
+    photoTitle: updateTitle,
+    zipcode: zipcode,
+    user_id: user_id,
+  },
+    {where:{id: id},
+    returning: true,
+    plain: true
+  })
+  console.log(req.body)
+  res.json(updatedPhoto)
+}
+))
+
 router.post('/add',
 singleMulterUpload("image"),
 asyncHandler( async (req, res) => {
     const { latitude, longitude, dateTime, user_id } = req.body;
+    console.log(req.body)
     const photoUrl = await singlePublicFileUpload(req.file)
     const newPhoto = await Photo.create({ 
         latitude,
@@ -64,7 +93,15 @@ asyncHandler( async (req, res) => {
     })
     res.json(newPhoto)
 })
-
 )
+
+router.delete("/:id", asyncHandler(async (req, res) => {
+  const deletePhoto = Photo.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+}))
+
 
 module.exports = router

@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {getNearbyPhotos} from "../../store/photo"
 import "./ImageThumb.css"
 import LazyLoad from "react-lazyload"
+import ViewSinglePhoto from "../ViewSinglePhoto"
 
 const ImageThumb = () => {
     const dispatch = useDispatch()
@@ -23,12 +24,8 @@ return (
   <>
     <div className="ImageThumb__photo-container">
         {locations.map((location) => (
-            <div key={location.id} className="ImageThumb__photo">
-              <LazyLoad>
-            <img src={location.photoThumbUrl} alt="nature" />
-            </LazyLoad>
-          </div>
-        ))}
+          <ViewSinglePhoto location={location} />
+                ))}
     </div>
   </>
 );

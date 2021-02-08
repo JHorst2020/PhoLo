@@ -15,10 +15,12 @@ const SearchBar = () => {
     const [location, setLocation] = useState("")
     const [dateRangeStart, setDateRangeStart] = useState("")
     const [dateRangeEnd, setDateRangeEnd] = useState("")
+    const mapBounds = useSelector((state) => state.map.mapBounds);
+    const mapCenter = useSelector((state) => state.map.mapFocus);
     
     const submitForm = async(e) => {
         e.preventDefault()
-        const payload = {location, radius, searchDateRange: [dateRangeStart, dateRangeEnd] }
+        const payload = {location, radius, searchDateRange: [dateRangeStart, dateRangeEnd],latBounds: mapBounds[0], lngBounds: mapBounds[1] }
         setLocation("")
         setDateRangeStart("")
         setDateRangeEnd("")
