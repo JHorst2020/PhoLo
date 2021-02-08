@@ -12,9 +12,9 @@ module.exports = {
     expiresIn: process.env.JWT_EXPIRES_IN,
   },
   "dialectOptions": {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
+    "ssl": {
+      "require": true,
+      "rejectUnauthorized": false,
     },
   },
 };
