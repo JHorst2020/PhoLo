@@ -52,7 +52,6 @@ router.get(
 
 router.put("/update", asyncHandler (async (req, res) => {
   const {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = req.body
-  console.log(req.body)
   const updatedPhoto = await Photo.update({
     city: city,
     locationName: locationName,
@@ -73,8 +72,8 @@ router.put("/update", asyncHandler (async (req, res) => {
     returning: true,
     plain: true
   })
-  console.log(req.body)
-  res.json(updatedPhoto)
+  
+  return res.json(updatedPhoto);
 }
 ))
 
