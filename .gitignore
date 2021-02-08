@@ -8,3 +8,4 @@ backend/credentials.json
 build
 .DS_Store
 
+node_modules
