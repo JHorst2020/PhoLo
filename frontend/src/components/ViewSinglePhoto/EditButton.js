@@ -37,24 +37,26 @@ export default function EditButton({location}) {
     const [updateTitle, setTitle] = useState(location.photoTitle)
     const [updateDescription, setDescription] = useState(location.description)
     // const [updateDate, setDate] = useState(location.dateTime)
-    console.log(updateDate)
+    console.log(currUser)
     const dispatch = useDispatch()
-    if(currUser.id && currUser.id === location.user_id){
-        const handleClickOpen = () => {
-            setOpen(true)
-        }
-        const handleClose = ()=> {
-            setOpen(false)
-        }
-        const handleSubmit = (e) => {
-            e.preventDefault()
-            const payload = {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl}
-            dispatch(updatePhoto(payload))
-        }
+    if(currUser !== undefined){
 
-        
-        return (
-            <>
+        if(currUser.id && currUser.id === location.user_id){
+            const handleClickOpen = () => {
+                setOpen(true)
+            }
+            const handleClose = ()=> {
+                setOpen(false)
+            }
+            const handleSubmit = (e) => {
+                e.preventDefault()
+                const payload = {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl}
+                dispatch(updatePhoto(payload))
+            }
+            
+            
+            return (
+                <>
         <Button onClick={handleClickOpen} variant="contained" color="primary" >Update </Button>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-text">
             <DialogTitle id="form-dialog-title">Update Photo Information</DialogTitle>
@@ -71,6 +73,7 @@ export default function EditButton({location}) {
         </Dialog>
         </>
     )
+}
     }
     return (
         <></>

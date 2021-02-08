@@ -66,7 +66,7 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-const initialState = { user: {id:"a"} };
+const initialState = { user: {id:"0"} };
 
 function reducer(state = initialState, action) {
   let newState;
