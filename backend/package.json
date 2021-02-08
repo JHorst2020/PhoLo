@@ -32,8 +32,7 @@
     "per-env": "^1.0.2",
     "pg": "^8.4.2",
     "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0",
-    "toposort": "^2.0.2"
+    "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
     "dotenv-cli": "^4.0.0",

@@ -17,7 +17,6 @@
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
-    "sequelize": "^6.5.0",
-    "toposort": "^2.0.2"
+    "sequelize": "^6.5.0"
   }
 }
