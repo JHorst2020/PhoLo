@@ -16,6 +16,7 @@ function ImageMeta() {
       EXIF.getData(file, function () {
 
         var exifData = EXIF.pretty(this);
+        console.log("This is exifData:     ",exifData)
         if (exifData) {
           let spaceIndex = EXIF.getTag(this, "DateTimeOriginal").indexOf(" ")
           let photoDate = EXIF.getTag(this, "DateTimeOriginal").slice(0, spaceIndex).split(":").join("-")

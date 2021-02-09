@@ -3,7 +3,11 @@ export const LOAD_NEARBY_PHOTOS = "./photo/LOAD_NEARBY_PHOTOS";
 export const LOAD_SEARCH_INFO = "./photo/LOAD_SEARCH_INFO";
 export const EXTRACT_EXIF_DATA = "./photo/EXTRACT_EXIF_DATA";
 export const UPDATE_SEARCH_COORDS = "./photo/UPDATE_SEARCH_COORDS";
-
+export const UPDATE_SINGLE_PHOTO = "./photo/UPDATE_SINGLE_PHOTO";
+const updateSinglePhoto = (information) => ({
+  type: UPDATE_SINGLE_PHOTO,
+  information
+});
 const loadNearbyPhotos = (locations) => ({
   type: LOAD_NEARBY_PHOTOS,
   locations,
@@ -26,7 +30,13 @@ const updateCoords = (searchLocation) => ({
   searchLocation
 })
 
-
+export const getMyPhotos = (userId) => async(dispatch)=> {
+  const res = await fetch(`/api/photo/myPhoto/${userId}`)
+  if (res.ok){
+    const locations = await res.json()
+    dispatch(loadNearbyPhotos(locations))
+  }
+}
 
 export const updateImagePreview = (payload) => async(dispatch) => {
   const {url} = payload
@@ -103,14 +113,16 @@ export const addNewPhoto = (photo) => async (dispatch) => {
   });
 };
 export const updatePhoto = (payload) => async(dispatch) => {
+  // const{id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = payload
   const res = await fetchy ("/api/photo/update", {
     method: "PUT",
     headers: {
-      'Content-type' : "application/json"
+      'Content-Type' : "application/json"
     },
     body: JSON.stringify(payload)
   })
-console.log(payload)
+  dispatch(updateSinglePhoto(payload))
+return res
 }
 
 export const photoExifData = (exifDataPayload) => async (dispatch) => {
@@ -122,6 +134,7 @@ export const photoExifData = (exifDataPayload) => async (dispatch) => {
 
 const initialState = {
   locations: [],
+  locationModal: [],
   searchLocation: [36.1699, -115.1398, 3],
   searchDateRange: ["1950-01-01", "2029-01-01"],
   // uploadedPhotoExif: {latitude: "", longitude:"", photoDate: "", image:"", url:""},
@@ -142,6 +155,12 @@ const photoReducer = (state = initialState, action) => {
         ...state,
         locations: action.locations,
       };
+    }
+    case UPDATE_SINGLE_PHOTO: {
+      return {
+        ...state,
+        locationModal: action.information
+      }
     }
     case LOAD_SEARCH_INFO: {
       return {

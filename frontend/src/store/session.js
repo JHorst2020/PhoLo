@@ -18,6 +18,15 @@ export const login = ({ credential, password }) => async (dispatch) => {
     body: JSON.stringify({ credential, password }),
   });
   dispatch(setUser(res.data.user));
+  return res
+};
+export const loginPhone = ({phoneNumber}) => async (dispatch) => {
+  const res = await fetch("/api/session/phone", {
+    method: "POST",
+    body: JSON.stringify({ phoneNumber }),
+  });
+  dispatch(setUser(res.data.user));
+  return res
 };
 
 export const restoreUser = () => async (dispatch) => {

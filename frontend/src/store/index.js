@@ -4,12 +4,14 @@ import session from "./session";
 import users from "./users";
 import photo from "./photo"
 import map from "./map"
+import digits from "./verification"
 
 const rootReducer = combineReducers({
   session,
   users,
   photo,
-  map
+  map,
+  digits
 });
 
 let enhancer;

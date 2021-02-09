@@ -22,3 +22,7 @@ img{
     display:flex;
     flex-direction: row;
 }
+
+div[highlighted]{
+    border: 5px solid red
+}

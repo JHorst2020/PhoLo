@@ -21,11 +21,23 @@ module.exports = (sequelize, DataTypes) => {
           [Op.or]: {
             username: credential,
             email: credential,
-            phoneNumber: credential,
           },
         },
       });
       if (user && user.validatePassword(password)) {
+        return await User.scope("currentUser").findByPk(user.id);
+      }
+    }
+    static async loginPhone({ phoneNumber }) {
+      // const { Op } = require("sequelize");
+    console.log("This is the phone numberasdf:   ", phoneNumber);
+
+      const user = await User.scope("loginUser").findOne({
+        where: {
+            phoneNumber: phoneNumber
+        },
+      });
+      if (user) {
         return await User.scope("currentUser").findByPk(user.id);
       }
     }

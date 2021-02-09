@@ -50,8 +50,22 @@ router.get(
   })
 );
 
+router.get("/myPhoto/:userId",
+  asyncHandler(async (req, res) => {
+    let id = req.params.userId;
+    const myPhotos = await Photo.findAll({
+      where: {
+        user_id: id
+      },
+      order: [["dateTime", "DESC"]]
+    })
+    res.json(myPhotos)
+  })
+)
+
 router.put("/update", asyncHandler (async (req, res) => {
   const {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = req.body
+  console.log("this is req.body:     ",city)
   const updatedPhoto = await Photo.update({
     city: city,
     locationName: locationName,
@@ -73,7 +87,7 @@ router.put("/update", asyncHandler (async (req, res) => {
     plain: true
   })
   
-  return res.json(updatedPhoto);
+  return res.json("updatedPhoto");
 }
 ))
 

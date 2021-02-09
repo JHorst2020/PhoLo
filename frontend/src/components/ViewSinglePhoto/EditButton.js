@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {useSelector, useDispatch} from "react-redux"
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -37,7 +37,7 @@ export default function EditButton({location}) {
     const [updateTitle, setTitle] = useState(location.photoTitle)
     const [updateDescription, setDescription] = useState(location.description)
     // const [updateDate, setDate] = useState(location.dateTime)
-    console.log(currUser)
+    // console.log(currUser)
     const dispatch = useDispatch()
     if(currUser !== undefined){
 
@@ -51,8 +51,10 @@ export default function EditButton({location}) {
             const handleSubmit = (e) => {
                 e.preventDefault()
                 const payload = {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl}
+                setOpen(false)
                 dispatch(updatePhoto(payload))
             }
+           
             
             
             return (

@@ -17,7 +17,8 @@ const SearchBar = () => {
     const [dateRangeEnd, setDateRangeEnd] = useState("")
     const mapBounds = useSelector((state) => state.map.mapBounds);
     const mapCenter = useSelector((state) => state.map.mapFocus);
-    
+    const user = useSelector((state) => state.session.user)
+
     const submitForm = async(e) => {
         e.preventDefault()
         const payload = {location, radius, searchDateRange: [dateRangeStart, dateRangeEnd],latBounds: mapBounds[0], lngBounds: mapBounds[1] }
@@ -46,7 +47,7 @@ const SearchBar = () => {
                 {/* <ImageMeta /> */}
             </div>
             <div className="custom-search-button-container">
-            <AddPhotoModal />
+            {user ? <AddPhotoModal /> : ""}
             </div>
         </div>
     )

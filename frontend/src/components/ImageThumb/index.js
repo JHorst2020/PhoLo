@@ -16,7 +16,7 @@ const ImageThumb = () => {
     useEffect(() => {
         let payload = {searchLat: mapCenter.lat, searchLng: mapCenter.lng, radius: searchLocation[2], dateRangeStart: searchDateRange[0], dateRangeEnd: searchDateRange[1], latBounds: mapBounds[0], lngBounds: mapBounds[1]}
         // let payload = {searchLat: 87, searchLng: -84, radius: 3}
-        console.log(payload)
+        // console.log(payload)
         dispatch(getNearbyPhotos(payload))
     }, [mapBounds])
     

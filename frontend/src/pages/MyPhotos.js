@@ -1,12 +1,14 @@
 import GoogleMap from "../components/GoogleMap";
-import ImageThumb from "../components/ImageThumb";
+import MyPhotoThumb from "../components/MyPhotoThumb";
 import SearchBar from "../components/SearchBar";
+import {useSelector} from "react-redux"
 
 
-const Home = () => {
+const MyPhotos= () => {
+
   return (
     <>
-      
+      <div>This is my photos</div>
       <SearchBar />
       <div className="Home__home-container">
         <div>
@@ -14,11 +16,11 @@ const Home = () => {
         </div>
 
         <div>
-          <ImageThumb />
+          <MyPhotoThumb />
         </div>
       </div>
     </>
   );
 };
 
-export default Home;
+export default MyPhotos;

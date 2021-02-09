@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/session";
+import Login from "./Login"
 
 // styled components are great. I recommend you looking into them!
 const NavWrapper = styled.div`
@@ -22,12 +23,15 @@ const Navbar = () => {
     }
   };
 
+
   return (
     <NavWrapper>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/signup">Create User</NavLink>
       <NavLink to="/users">All Users</NavLink>
-      <button onClick={handleLogout}>{user ? "Logout" : "Login"}</button>
+      {user ? <button onClick={handleLogout}>Logout</button> : <Login />}
+      {/* <button onClick={handleLogout}>{user ? "Logout" : "Login"}</button> */}
+      {user ? <NavLink to="/myPhotos">My Photos</NavLink> : ""}
     </NavWrapper>
   );
 };

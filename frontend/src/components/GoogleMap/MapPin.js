@@ -19,10 +19,18 @@ import {updateSearchCoord} from "../../store/photo"
 
 const MapPin = ({id, photoUrl, lat, lng}) => {
     const dispatch = useDispatch()
-    const showInfoBox = () => document.getElementById(`info-box-${id}`).removeAttribute('hidden')
+    const showInfoBox = (e) => {
+        document.getElementById(`info-box-${id}`).removeAttribute('hidden')
+        document.getElementById(`photothumb-${id}`).setAttribute('highlighted', true)
+        console.log(e.target.id)
+    }
     // const showInfoBox = () => console.log(document.getElementById(`info-box-${id}`))
     // const hideInfoBox = () => console.log("hide info box")
-    const hideInfoBox = () => document.getElementById(`info-box-${id}`).setAttribute("hidden", "")
+    const hideInfoBox = () => {
+        document.getElementById(`info-box-${id}`).setAttribute("hidden", "")
+        document.getElementById(`photothumb-${id}`).removeAttribute('highlighted')
+
+    }
     // const pinClick = () => {
     //     const payload = {location: [lat, lng]}
     //     dispatch(updateSearchCoord(payload))
@@ -31,7 +39,7 @@ const MapPin = ({id, photoUrl, lat, lng}) => {
     return (
         <>
                 
-            <div className="mapPin" onMouseOver={showInfoBox} onMouseOut={hideInfoBox} >
+            <div id={`map-pin-${id}`} className="mapPin" onMouseOver={showInfoBox} onMouseOut={hideInfoBox} >
                 
             </div>
             <div id={`info-box-${id}`} hidden >

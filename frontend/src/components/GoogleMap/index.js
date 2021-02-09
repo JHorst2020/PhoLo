@@ -7,7 +7,7 @@ import {updateMapBounds} from "../../store/map"
 
 const Map = styled.div`
   width: 500px;
-  height: 100vh;
+  height: 80vh;
   padding: 0px;
   border: 1px solid transparent;
   position: relative;
@@ -47,6 +47,7 @@ const GoogleMap = () => {
     center = e.center
     dispatch(updateMapBounds({mapBounds: [latBounds, lngBounds], mapFocus: center}))
   }
+  useEffect(() => {},[lat, lng])
   // useEffect(() => {
   //   let payload = {payload: [latBounds, lngBounds]}
   //   dispatch(updateMapBounds(payload))
