@@ -3,6 +3,8 @@ import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/session";
 import Login from "./Login"
+import Button from "@material-ui/core/Button";
+import AddPhotoModal from "../components/AddPhotoModal";
 
 // styled components are great. I recommend you looking into them!
 const NavWrapper = styled.div`
@@ -18,21 +20,25 @@ const Navbar = () => {
   const handleLogout = () => {
     if (user) {
       dispatch(logout());
+      history.push("/")
     } else {
       history.push("/signup");
     }
   };
-
+<Button variant="outlined" color="primary">Create User</Button>
 
   return (
+    
     <NavWrapper>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/signup">Create User</NavLink>
-      <NavLink to="/users">All Users</NavLink>
-      {user ? <button onClick={handleLogout}>Logout</button> : <Login />}
+      <NavLink to="/"><Button variant="outlined" color="primary">Home</Button></NavLink>
+      {user ? "" : <NavLink to="/signup"><Button variant="outlined" color="primary">Create User</Button></NavLink>}
+      <NavLink to="/users"><Button variant="outlined" color="primary">All Users</Button></NavLink>
       {/* <button onClick={handleLogout}>{user ? "Logout" : "Login"}</button> */}
-      {user ? <NavLink to="/myPhotos">My Photos</NavLink> : ""}
+      {user ? <NavLink to="/myPhotos"><Button variant="outlined" color="primary">My Photos</Button></NavLink> : ""}
+    {user ? <AddPhotoModal /> : ""}
+      {user ? <Button onClick={handleLogout} variant="outlined" color="primary">Logout</Button> : <Login />}
     </NavWrapper>
+    
   );
 };
 

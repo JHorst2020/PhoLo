@@ -15,6 +15,9 @@ import {updatePhoto} from "../../store/photo"
 export default function EditButton({location}) {
     // let stringDate = location.dateTime.toString()
     const currUser = useSelector((state) => state.session.user )
+    const locations = useSelector((state) => state.photo.locations);
+    let locIndex = locations.findIndex(obj => obj.id === location.id);
+    // const singlelocation = useSelector((state) => state.photo.locations[locIndex])
     let stringDate = location.dateTime
     if (location.dateTime.indexOf("T") > 0) {
         stringDate = location.dateTime.slice(0,location.dateTime.indexOf("T"))
@@ -29,16 +32,16 @@ export default function EditButton({location}) {
     const zipcode = location.zipcode;
     const photoUrl = location.photoUrl
     const photoThumbUrl = location.photoThumbUrl
-
     const [updateDate, setDate] = useState(stringDate);
     const [open, setOpen] = useState(false)
-    const [updateLat, setLat] = useState(location.latitude)
-    const [updateLng, setLng] = useState(location.longitude)
-    const [updateTitle, setTitle] = useState(location.photoTitle)
-    const [updateDescription, setDescription] = useState(location.description)
+    const [updateLat, setLat] = useState(locations[locIndex].latitude)
+    const [updateLng, setLng] = useState(locations[locIndex].longitude)
+    const [updateTitle, setTitle] = useState(locations[locIndex].photoTitle)
+    const [updateDescription, setDescription] = useState(locations[locIndex].description)
     // const [updateDate, setDate] = useState(location.dateTime)
     // console.log(currUser)
     const dispatch = useDispatch()
+    
     if(currUser !== undefined){
 
         if(currUser.id && currUser.id === location.user_id){

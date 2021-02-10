@@ -4,6 +4,9 @@ import {useDispatch, useSelector} from "react-redux"
 import search from "./search.svg"
 import  AddPhotoModal from "../AddPhotoModal";
 // import  ImageMeta from "../AddPhotoModal/ExifExtract";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+
 
 
 
@@ -37,18 +40,18 @@ const SearchBar = () => {
         <div className="search-bar">
             <form onSubmit={submitForm}>
                 
-                <input className="search-bar" placeholder="Where?" value={location} onChange={(e) => setLocation(e.target.value)} />
-                <input type="date" className="search-bar" placeholder="Start Date" value={dateRangeStart} onChange={(e)=> setDateRangeStart(e.target.value)} />
-                <input type="date" className="search-bar" placeholder="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} />
-                <button className="search-button"><img src={search} alt="search" className="search" /></button>
+                <TextField margin="dense" variant="outlined" className="search-bar" placeholder="Where?" value={location} onChange={(e) => setLocation(e.target.value)} />
+                <TextField margin="dense" variant="outlined" type="date" className="search-bar" placeholder="Start Date" value={dateRangeStart} onChange={(e)=> setDateRangeStart(e.target.value)} />
+                <TextField margin="dense" variant="outlined" type="date" className="search-bar" placeholder="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} />
+                <Button variant="outlined" color="primary"className="search-button" type="submit"><img src={search} alt="search" className="search" /></Button>
             </form>
             <div>
                 {/* <button>Choose File<ImageMeta /></button> */}
                 {/* <ImageMeta /> */}
             </div>
-            <div className="custom-search-button-container">
+            {/* <div className="custom-search-button-container">
             {user ? <AddPhotoModal /> : ""}
-            </div>
+            </div> */}
         </div>
     )
 

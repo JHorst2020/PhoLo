@@ -13,11 +13,12 @@ const loadNearbyPhotos = (locations) => ({
   locations,
 });
 
-const loadSearchInfo = (locations, searchDateRange, searchLocation) => ({
+const loadSearchInfo = (locations, searchDateRange, searchLocation, searchLocationName) => ({
   type: LOAD_SEARCH_INFO,
   locations,
   searchDateRange,
   searchLocation,
+  searchLocationName
 });
 
 const photoExif = (uploadedPhotoExif) => ({
@@ -65,8 +66,8 @@ export const getNearbyPhotos = (payload) => async (dispatch) => {
 };
 
 export const updateSearchCoord = (payload) => async(dispatch) => {
-  const {location} = payload;
-  dispatch(updateCoords(location))
+  const {searchLocation} = payload;
+  dispatch(updateCoords(searchLocation))
 }
 
 export const searchByLocation = (payload) => async (dispatch) => {
@@ -76,8 +77,10 @@ export const searchByLocation = (payload) => async (dispatch) => {
     `https://maps.googleapis.com/maps/api/geocode/json?address=${spaceRemover}&key=${process.env.REACT_APP_GOOGLE_API}`
   );
   const googleResponse = await res.json();
+  console.log("this is the google Response:       ",googleResponse)
   let searchLat = await googleResponse.results[0].geometry.location.lat;
   let searchLng = await googleResponse.results[0].geometry.location.lng;
+  let searchLocationName = await googleResponse.results[0].formatted_address
   let dateRangeStart = searchDateRange[0];
   let dateRangeEnd = searchDateRange[1];
   const response = await fetch(
@@ -87,7 +90,7 @@ export const searchByLocation = (payload) => async (dispatch) => {
   if (response.ok) {
     const locations = await response.json();
     const searchLocation = [searchLat, searchLng, radius];
-    dispatch(loadSearchInfo(locations, searchDateRange, searchLocation));
+    dispatch(loadSearchInfo(locations, searchDateRange, searchLocation, searchLocationName));
   }
 };
 
@@ -121,8 +124,29 @@ export const updatePhoto = (payload) => async(dispatch) => {
     },
     body: JSON.stringify(payload)
   })
-  dispatch(updateSinglePhoto(payload))
+  const {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = payload;
+  const updatedInfo = {
+    city: city,
+    locationName: locationName,
+    photoUrl: photoUrl,
+    photoThumbUrl: photoThumbUrl,
+    state: state,
+    streetName: streetName,
+    streetNumber: streetNumber,
+    dateTime: updateDate,
+    description: updateDescription,
+    latitude: updateLat,
+    longitude: updateLng,
+    photoTitle: updateTitle,
+    zipcode: zipcode,
+    user_id: user_id,
+  };
+  dispatch(updateSinglePhoto(updatedInfo))
 return res
+}
+
+export const updateLocationModal = (payload) => async(dispatch) => {
+  dispatch(updateSinglePhoto(payload))
 }
 
 export const photoExifData = (exifDataPayload) => async (dispatch) => {
@@ -135,6 +159,7 @@ export const photoExifData = (exifDataPayload) => async (dispatch) => {
 const initialState = {
   locations: [],
   locationModal: [],
+  searchLocationName: ["Nearby Photos"],
   searchLocation: [36.1699, -115.1398, 3],
   searchDateRange: ["1950-01-01", "2029-01-01"],
   // uploadedPhotoExif: {latitude: "", longitude:"", photoDate: "", image:"", url:""},
@@ -168,6 +193,7 @@ const photoReducer = (state = initialState, action) => {
         searchDateRange: action.searchDateRange,
         locations: action.locations,
         searchLocation: action.searchLocation,
+        searchLocationName: action.searchLocationName
       };
     }
     case UPDATE_SEARCH_COORDS: {

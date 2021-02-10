@@ -12,6 +12,7 @@ import NumberFormat from "react-number-format";
 import {getRandomDigits} from "../../store/verification"
 
 
+
 const LoginModal = () => {
     const [open, setOpen] = useState(false)
     const [openUserName, setOpenUserName] = useState(false)
@@ -75,7 +76,7 @@ const LoginModal = () => {
         }
     }
     const currUser = useSelector((state) => state.session.user)
-    if (currUser=== undefined){
+    if (currUser=== undefined || currUser=== null){
         return (
         <div> 
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -88,13 +89,13 @@ const LoginModal = () => {
                 <Dialog open={openUserName} onClose={handleClose} aria-labelledby="form-dialog-title">
 
                     <DialogContent>
-                    <DialogTitle id="form-dialog-title" >Login</DialogTitle>
+                    <DialogTitle id="form-dialog-title" >Username/Email Login</DialogTitle>
                     <ul>
                         {errors.map((error, idx)=> (
                             <li key={idx}>{error}</li>
                             ))}
                     </ul>
-                    <TextField  margin="dense" id="username" label="Phone Number" type="tel" fullWidth variant="outlined" value={credential} onChange={(e) => setCredential(e.target.value)}/>
+                    <TextField  margin="dense" id="username" label="Username/Email" type="text" fullWidth variant="outlined" value={credential} onChange={(e) => setCredential(e.target.value)}/>
                     <TextField  margin="dense" id="password" label="Password" type="password" fullWidth variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)}/>
                     </DialogContent>
                     <DialogActions>
@@ -106,19 +107,20 @@ const LoginModal = () => {
                 <Dialog open={openPhoneNumber} onClose={handleClose} aria-labelledby="form-dialog-title">
 
                     <DialogContent>
-                    <DialogTitle id="form-dialog-title" >Login</DialogTitle>
+                    <DialogTitle id="form-dialog-title" >Phone Number Login</DialogTitle>
                     <ul>
                         {errors.map((error, idx)=> (
                             <li key={idx}>{error}</li>
                             ))}
                     </ul>
                     <span>
-                        <NumberFormat format="+1 (###) ###-####" allowEmptyFormatting mask="_" onChange={(e) => lazyphone(e.target.value)}/>
+                            <NumberFormat variant="outlined" format="+1 (###) ###-####" allowEmptyFormatting mask="_" onChange={(e) => lazyphone(e.target.value)}/>
+                            
                         <Button  onClick={generateDigits} color="Primary"> Send Verification </Button>
                         
                     </span>
 
-                    <TextField  margin="dense" id="password" label="Password" type="number" max="4" fullWidth variant="outlined" value={enterDigits} onChange={(e) => setEnterDigits(e.target.value)}/>
+                    <TextField  margin="dense" id="digits" label="4 Digit Code" type="number" max="4" fullWidth variant="outlined" value={enterDigits} onChange={(e) => setEnterDigits(e.target.value)}/>
                     </DialogContent>
                     <DialogActions>
                         <Button  onClick={cancelPhoneLogin} color="Primary"> Cancel </Button>
@@ -130,6 +132,8 @@ const LoginModal = () => {
             
         </div>
         )
+    } else {
+        return(<div></div>)
     }
 
 

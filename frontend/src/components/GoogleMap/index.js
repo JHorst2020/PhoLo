@@ -1,9 +1,10 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import MapPin from "./MapPin.js"
 import {updateMapBounds} from "../../store/map"
+import {updateSearchCoord} from "../../store/photo"
 
 const Map = styled.div`
   width: 500px;
@@ -29,7 +30,7 @@ const MapContainer = styled.div`
   // margin-bott0m: 100px;
 `;
 
-const GoogleMap = () => {
+const GoogleMap = ({reloadProp}) => {
   // const locationMarks = useSelector((state) => state.locations.locationlist);
   const dispatch = useDispatch()
   let lat = useSelector((state) => state.photo.searchLocation[0]);
@@ -45,13 +46,9 @@ const GoogleMap = () => {
     latBounds = Math.abs((e.marginBounds.sw.lat - e.marginBounds.ne.lat));
     lngBounds = Math.abs((e.marginBounds.sw.lng - e.marginBounds.ne.lng));
     center = e.center
+    console.log("this is center    ",center )
     dispatch(updateMapBounds({mapBounds: [latBounds, lngBounds], mapFocus: center}))
   }
-  useEffect(() => {},[lat, lng])
-  // useEffect(() => {
-  //   let payload = {payload: [latBounds, lngBounds]}
-  //   dispatch(updateMapBounds(payload))
-  // }, [lng])
   return (
     <MapComponentContainer>
       <MapContainer>
@@ -62,7 +59,7 @@ const GoogleMap = () => {
               key: `${process.env.REACT_APP_GOOGLE_API_DEVELOPMENT}`,
               
             }}
-            defaultCenter={{
+            center={{
               lat: lat,
               lng: lng,
             }}

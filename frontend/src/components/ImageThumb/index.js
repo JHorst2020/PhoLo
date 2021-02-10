@@ -8,6 +8,7 @@ import ViewSinglePhoto from "../ViewSinglePhoto"
 const ImageThumb = () => {
     const dispatch = useDispatch()
     const searchLocation = useSelector((state) => state.photo.searchLocation)
+    const searchLocationName = useSelector((state) => state.photo.searchLocationName)
     const locations = useSelector((state) => state.photo.locations)
     const searchDateRange = useSelector((state) => state.photo.searchDateRange)
     const mapBounds = useSelector((state) => state.map.mapBounds)
@@ -22,6 +23,10 @@ const ImageThumb = () => {
     
 return (
   <>
+    <span>
+      <h2>{searchLocationName}</h2>
+      <h4>Between {searchDateRange[0]} and {searchDateRange[1]}</h4>
+    </span>
     <div className="ImageThumb__photo-container">
         {locations.map((location) => (
           <ViewSinglePhoto location={location} />

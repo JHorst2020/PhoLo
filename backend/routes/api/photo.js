@@ -87,7 +87,7 @@ router.put("/update", asyncHandler (async (req, res) => {
     plain: true
   })
   
-  return res.json("updatedPhoto");
+  return res.json(updatedPhoto);
 }
 ))
 
