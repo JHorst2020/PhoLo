@@ -8,6 +8,9 @@ import ViewSinglePhoto from "../ViewSinglePhoto";
 
 const MyPhotoThumb = () => {
   const searchLocationName = useSelector((state) => state.photo.searchLocationName)
+  const searchLocation = useSelector((state) => state.photo.searchLocation);
+  const mapBounds = useSelector((state) => state.map.mapBounds);
+  
   const searchDateRange = useSelector((state) => state.photo.searchDateRange)
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user)
@@ -15,7 +18,7 @@ const MyPhotoThumb = () => {
 
   useEffect(() => {
     dispatch(getMyPhotos(user.id));
-  }, []);
+  }, [mapBounds]);
  
   return (
     <>

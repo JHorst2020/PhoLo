@@ -8,7 +8,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import EditButton from "./EditButton.js"
-import { updateLocationModal } from "../../store/photo";
+import { updateLocationModal, updateSearchCoord } from "../../store/photo";
 
 
 const photoStyle = {
@@ -20,13 +20,17 @@ const ViewSinglePhoto = ({location}) => {
     const [open, setOpen] = useState(false);
       const locations = useSelector((state) => state.photo.locations);
       let locIndex = locations.findIndex((obj) => obj.id === location.id);
-    const singlelocation = useSelector((state) => state.photo.locations[locIndex])
-
+    // const singlelocation = useSelector((state) => state.photo.locations[locIndex])
     const modalLocation = useSelector((state) => state.photo.locationModal)
-  console.log("is this the correct location?:     ",singlelocation)
+    const searchLocation = useSelector((state) => state.photo.searchLocation)
+  // console.log("is this the correct location?:     ",singlelocation)
 
      const handleClickOpen = () => {
+       const payload = {id, photoTitle, user_id, description, dateTime, locationName, streetNumber, streetName,city, state, zipcode, photoUrl, photoThumbUrl}
+     console.log("this is the locationid:    ",id)
+    dispatch(updateLocationModal(payload))
     setOpen(true);
+    dispatch(updateSearchCoord({searchLocation: [location.latitude,location.longitude,5]}))
 
   };
   const handleClose = () => {
@@ -45,11 +49,11 @@ const ViewSinglePhoto = ({location}) => {
    const photoUrl = location.photoUrl;
    const photoThumbUrl = location.photoThumbUrl;
    const description = location.description
-   console.log("this is the locationtitle:    ",photoTitle)
    useEffect(() => {
-    const payload = {id, photoTitle, user_id, description, dateTime, locationName, streetNumber, streetName,city, state, zipcode, photoUrl, photoThumbUrl}
-    dispatch(updateLocationModal(payload))
-   },[open])
+     //    const payload = {id, photoTitle, user_id, description, dateTime, locationName, streetNumber, streetName,city, state, zipcode, photoUrl, photoThumbUrl}
+     //    console.log("this is the locationid:    ",id)
+     //   dispatch(updateLocationModal(payload))
+   },[searchLocation])
 const mouseOver = () => {
   document.getElementById(`map-pin-${location.id}`).setAttribute("highlighted", true)
 }
@@ -64,7 +68,7 @@ return (
     
         {location.photoThumbUrl ? <img src={location.photoThumbUrl} alt="nature" onClick={handleClickOpen}/> : <img src={location.photoUrl} alt="nature" onClick={handleClickOpen}/>}
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-text">
-            <Button onClick={handleClose}>{modalLocation.id}</Button>
+            <Button onClick={handleClose}>{id}</Button>
             <img src={modalLocation.photoUrl} style={photoStyle}/>
             <h3>{modalLocation.photoTitle}</h3>
             {modalLocation.description}

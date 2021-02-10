@@ -21,15 +21,29 @@ const loadSearchInfo = (locations, searchDateRange, searchLocation, searchLocati
   searchLocationName
 });
 
-const photoExif = (uploadedPhotoExif) => ({
+const photoExif = (uploadedPhotoExif, searchLocation) => ({
   type: EXTRACT_EXIF_DATA,
   uploadedPhotoExif,
+  searchLocation
 });
 
 const updateCoords = (searchLocation) => ({
   type: UPDATE_SEARCH_COORDS,
   searchLocation
 })
+export const deletePhoto = (payload) => async(dispatch) => {
+  const {id, searchLocation} = payload
+  const data = await fetchy(`/api/photo/${id}`, {
+    method: "DELETE",
+    headers: { 'Content-Type': 'application/json'}
+  })
+  const deleted = await data
+  if (deleted.ok){
+    dispatch(updateCoords(searchLocation))
+  } else {
+    console.log("Error with deletion")
+  }
+}
 
 export const getMyPhotos = (userId) => async(dispatch)=> {
   const res = await fetch(`/api/photo/myPhoto/${userId}`)
@@ -153,7 +167,8 @@ export const photoExifData = (exifDataPayload) => async (dispatch) => {
   const { latitude, longitude, photoDate, image, url } = exifDataPayload;
   console.log(exifDataPayload);
   const uploadedPhotoExif = { latitude, longitude, photoDate, image};
-  dispatch(photoExif(uploadedPhotoExif));
+  const searchLocation = [latitude, longitude, 6]
+  dispatch(photoExif(uploadedPhotoExif, searchLocation));
 };
 
 const initialState = {
@@ -173,6 +188,7 @@ const photoReducer = (state = initialState, action) => {
       return {
         ...state,
         uploadedPhotoExif: action.uploadedPhotoExif,
+        searchLocation: action.searchLocation
       };
     }
     case LOAD_NEARBY_PHOTOS: {

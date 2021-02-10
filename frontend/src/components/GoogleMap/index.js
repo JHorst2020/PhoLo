@@ -65,6 +65,7 @@ const GoogleMap = ({reloadProp}) => {
             }}
             zoom={radiusToZoom}
             onChange={handleMapChange}
+            locations
             
           >
             {locations.map(location => (<MapPin key={location.id} id={location.id} lat={location.latitude} lng={location.longitude} photoUrl={location.photoUrl} />)
