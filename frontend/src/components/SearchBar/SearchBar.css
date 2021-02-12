@@ -1,0 +1,23 @@
+.search-bar{
+    /* background-color:#464866; */
+    display:flex;
+    align-items:center;
+    
+}
+.search-bar-text-field{
+    background-color:white;
+    border-radius:20px;
+    color:white;
+}
+.search-bar-logo{
+    height:50px;
+}
+
+.search-bar-text-field:focus, input:focus {
+    outline:none;
+}
+
+.fa-search{
+    font-size: 24px;
+    padding:10px;
+}

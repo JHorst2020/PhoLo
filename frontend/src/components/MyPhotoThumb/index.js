@@ -22,10 +22,12 @@ const MyPhotoThumb = () => {
  
   return (
     <>
-    <span>
-      <h2>{searchLocationName}</h2>
-      <h4>Between {searchDateRange[0]} and {searchDateRange[1]}</h4>
-    </span>
+      <div>
+        <div className="text-location-name">{searchLocationName}</div>
+        <div className="text-location-dates">
+          Between {searchDateRange[0]} and {searchDateRange[1]}
+        </div>
+      </div>
       <div className="ImageThumb__photo-container">
         {locations.map((location) => (
           <ViewSinglePhoto location={location} />

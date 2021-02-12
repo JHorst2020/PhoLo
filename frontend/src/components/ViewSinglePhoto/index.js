@@ -15,9 +15,9 @@ const photoStyle = {
     maxWidth: "1200px"
 }
 
-const ViewSinglePhoto = ({location}) => {
+const ViewSinglePhoto = ({location, isOpen=false}) => {
   const dispatch = useDispatch()
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(isOpen);
       const locations = useSelector((state) => state.photo.locations);
       let locIndex = locations.findIndex((obj) => obj.id === location.id);
     // const singlelocation = useSelector((state) => state.photo.locations[locIndex])
@@ -27,7 +27,7 @@ const ViewSinglePhoto = ({location}) => {
 
      const handleClickOpen = () => {
        const payload = {id, photoTitle, user_id, description, dateTime, locationName, streetNumber, streetName,city, state, zipcode, photoUrl, photoThumbUrl}
-     console.log("this is the locationid:    ",id)
+    //  console.log("this is the locationid:    ",id)
     dispatch(updateLocationModal(payload))
     setOpen(true);
     dispatch(updateSearchCoord({searchLocation: [location.latitude,location.longitude,5]}))
@@ -35,6 +35,7 @@ const ViewSinglePhoto = ({location}) => {
   };
   const handleClose = () => {
     setOpen(false);
+    mouseOut()
   }
    const id = location.id;
    const user_id = location.user_id;
@@ -62,14 +63,18 @@ const mouseOut = () => {
 }
 
 
+
 return (
   <>
-    <div id={`photothumb-${location.id}`} key={location.id} className="ImageThumb__photo" onMouseOver={mouseOver} onMouseOut={mouseOut}>
-    
-        {location.photoThumbUrl ? <img src={location.photoThumbUrl} alt="nature" onClick={handleClickOpen}/> : <img src={location.photoUrl} alt="nature" onClick={handleClickOpen}/>}
+    {/* <div key={location.id} className="ImageThumb__photo" onMouseOver={mouseOver} onMouseOut={mouseOut}> */}
+    <div id={`photothumb-${location.id}`} key={location.id} className="ImageThumb__photo pointer" onMouseOver={mouseOver} onMouseOut={mouseOut} >
+    <div className="ImageContainer">
+        {location.photoThumbUrl ? <img src={location.photoThumbUrl} alt="nature" onClick={handleClickOpen} id={`photothumb-${location.id}`} className="thumb-image"/> : <img src={location.photoUrl} alt="nature" onClick={handleClickOpen} id={`photothumb-${location.id}`}className="thumb-image"/>}
+    </div>
+    </div>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-text">
             <Button onClick={handleClose}>{id}</Button>
-            <img src={modalLocation.photoUrl} style={photoStyle}/>
+            <img src={modalLocation.photoUrl} style={photoStyle} className="modal-image" />
             <h3>{modalLocation.photoTitle}</h3>
             {modalLocation.description}
             <DialogContentText>
@@ -80,7 +85,7 @@ return (
                     </DialogContentText>
                     <EditButton location={location} />
         </Dialog>
-    </div>
+    {/* </div> */}
   </>
 );
 

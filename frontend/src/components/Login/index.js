@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import Button from "@material-ui/core/Button";
@@ -11,9 +12,16 @@ import DialogContent from "@material-ui/core/DialogContent";
 import NumberFormat from "react-number-format";
 import {getRandomDigits} from "../../store/verification"
 
-
+const useStyles = makeStyles((theme) => ({
+  root: {
+    size: "large",
+    backgroundColor: "#2e9cca",
+    variant: "contained",
+  },
+}));
 
 const LoginModal = () => {
+  const classes = useStyles();
     const [open, setOpen] = useState(false)
     const [openUserName, setOpenUserName] = useState(false)
     const [openPhoneNumber, setOpenPhoneNumber] = useState(false)
@@ -78,62 +86,139 @@ const LoginModal = () => {
     const currUser = useSelector((state) => state.session.user)
     if (currUser=== undefined || currUser=== null){
         return (
-        <div> 
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                    Login
+          <a className="navBarCssButton">
+            <Button
+              classes={{ root: classes.root }}
+              variant="contained"
+              color="primary"
+              onClick={handleClickOpen}
+            >
+              Login
             </Button>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle > Select an Option to Login</DialogTitle>
-                <Button variant="outlined" color="primary" onClick={handleClickUser}>Username/Password</Button>
-                <Button variant="outlined" color="primary" onClick={handleClickPhone}>Phone Number</Button>
-                <Dialog open={openUserName} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="form-dialog-title"
+            >
+              <DialogTitle> Select an Option to Login</DialogTitle>
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={handleClickUser}
+              >
+                Username/Password
+              </Button>
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={handleClickPhone}
+              >
+                Phone Number
+              </Button>
+              <Dialog
+                open={openUserName}
+                onClose={handleClose}
+                aria-labelledby="form-dialog-title"
+              >
+                <DialogContent>
+                  <DialogTitle id="form-dialog-title">
+                    Username/Email Login
+                  </DialogTitle>
+                  <ul>
+                    {errors.map((error, idx) => (
+                      <li key={idx}>{error}</li>
+                    ))}
+                  </ul>
+                  <TextField
+                    margin="dense"
+                    id="username"
+                    label="Username/Email"
+                    type="text"
+                    fullWidth
+                    variant="outlined"
+                    value={credential}
+                    onChange={(e) => setCredential(e.target.value)}
+                  />
+                  <TextField
+                    margin="dense"
+                    id="password"
+                    label="Password"
+                    type="password"
+                    fullWidth
+                    variant="outlined"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={cancelUsernameLogin} color="Primary">
+                    {" "}
+                    Cancel{" "}
+                  </Button>
+                  <Button onClick={handleSubmit} color="Primary">
+                    {" "}
+                    Login{" "}
+                  </Button>
+                </DialogActions>
+              </Dialog>
 
-                    <DialogContent>
-                    <DialogTitle id="form-dialog-title" >Username/Email Login</DialogTitle>
-                    <ul>
-                        {errors.map((error, idx)=> (
-                            <li key={idx}>{error}</li>
-                            ))}
-                    </ul>
-                    <TextField  margin="dense" id="username" label="Username/Email" type="text" fullWidth variant="outlined" value={credential} onChange={(e) => setCredential(e.target.value)}/>
-                    <TextField  margin="dense" id="password" label="Password" type="password" fullWidth variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button  onClick={cancelUsernameLogin} color="Primary"> Cancel </Button>
-                        <Button  onClick={handleSubmit} color="Primary"> Login </Button>
-                    </DialogActions>
-                </Dialog>
+              <Dialog
+                open={openPhoneNumber}
+                onClose={handleClose}
+                aria-labelledby="form-dialog-title"
+              >
+                <DialogContent>
+                  <DialogTitle id="form-dialog-title">
+                    Phone Number Login
+                  </DialogTitle>
+                  <ul>
+                    {errors.map((error, idx) => (
+                      <li key={idx}>{error}</li>
+                    ))}
+                  </ul>
+                  <span>
+                    <NumberFormat
+                      variant="outlined"
+                      format="+1 (###) ###-####"
+                      allowEmptyFormatting
+                      mask="_"
+                      onChange={(e) => lazyphone(e.target.value)}
+                    />
 
-                <Dialog open={openPhoneNumber} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <Button onClick={generateDigits} color="Primary">
+                      {" "}
+                      Send Verification{" "}
+                    </Button>
+                  </span>
 
-                    <DialogContent>
-                    <DialogTitle id="form-dialog-title" >Phone Number Login</DialogTitle>
-                    <ul>
-                        {errors.map((error, idx)=> (
-                            <li key={idx}>{error}</li>
-                            ))}
-                    </ul>
-                    <span>
-                            <NumberFormat variant="outlined" format="+1 (###) ###-####" allowEmptyFormatting mask="_" onChange={(e) => lazyphone(e.target.value)}/>
-                            
-                        <Button  onClick={generateDigits} color="Primary"> Send Verification </Button>
-                        
-                    </span>
-
-                    <TextField  margin="dense" id="digits" label="4 Digit Code" type="number" max="4" fullWidth variant="outlined" value={enterDigits} onChange={(e) => setEnterDigits(e.target.value)}/>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button  onClick={cancelPhoneLogin} color="Primary"> Cancel </Button>
-                        <Button  onClick={handlePhoneSubmit} color="Primary"> Login </Button>
-                    </DialogActions>
-                </Dialog>
-
+                  <TextField
+                    margin="dense"
+                    id="digits"
+                    label="4 Digit Code"
+                    type="number"
+                    max="4"
+                    fullWidth
+                    variant="outlined"
+                    value={enterDigits}
+                    onChange={(e) => setEnterDigits(e.target.value)}
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={cancelPhoneLogin} color="Primary">
+                    {" "}
+                    Cancel{" "}
+                  </Button>
+                  <Button onClick={handlePhoneSubmit} color="Primary">
+                    {" "}
+                    Login{" "}
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </Dialog>
-            
-        </div>
-        )
+          </a>
+        );
     } else {
-        return(<div></div>)
+        return(<></>)
     }
 
 

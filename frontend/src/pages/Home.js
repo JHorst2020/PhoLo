@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       
-      <SearchBar />
+      {/* <SearchBar /> */}
       <div className="Home__home-container">
         <div>
           <GoogleMap reloadProp={reloadProp}/>

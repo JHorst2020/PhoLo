@@ -30,7 +30,7 @@ const MapContainer = styled.div`
   // margin-bott0m: 100px;
 `;
 
-const GoogleMap = ({reloadProp}) => {
+const GoogleMap = () => {
   // const locationMarks = useSelector((state) => state.locations.locationlist);
   const dispatch = useDispatch()
   let lat = useSelector((state) => state.photo.searchLocation[0]);
@@ -43,8 +43,8 @@ const GoogleMap = ({reloadProp}) => {
   let center
   const handleMapChange = (e) => {
     console.log(e)
-    latBounds = Math.abs((e.marginBounds.sw.lat - e.marginBounds.ne.lat));
-    lngBounds = Math.abs((e.marginBounds.sw.lng - e.marginBounds.ne.lng));
+    latBounds = Math.abs((e.marginBounds.sw.lat - e.marginBounds.ne.lat)*0.49);
+    lngBounds = Math.abs((e.marginBounds.sw.lng - e.marginBounds.ne.lng)*0.5);
     center = e.center
     console.log("this is center    ",center )
     dispatch(updateMapBounds({mapBounds: [latBounds, lngBounds], mapFocus: center}))
@@ -68,7 +68,7 @@ const GoogleMap = ({reloadProp}) => {
             locations
             
           >
-            {locations.map(location => (<MapPin key={location.id} id={location.id} lat={location.latitude} lng={location.longitude} photoUrl={location.photoUrl} />)
+            {locations.map(location => (<MapPin location={location} key={location.id} id={location.id} lat={location.latitude} lng={location.longitude} photoUrl={location.photoUrl} />)
             )}
           </GoogleMapReact>
         </Map>

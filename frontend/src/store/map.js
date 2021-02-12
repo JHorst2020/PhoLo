@@ -1,4 +1,5 @@
-export const MAP_BOUNDS = './photo/MAP_BOUNDS'
+export const MAP_BOUNDS = './map/MAP_BOUNDS'
+export const PIN_CLICK = "./map/pinClick"
 
 const loadMapBounds = (mapBounds, mapFocus) => ({
     type: MAP_BOUNDS,
@@ -6,15 +7,24 @@ const loadMapBounds = (mapBounds, mapFocus) => ({
     mapFocus
 })
 
+const pinId = (id) => ({
+    type: PIN_CLICK,
+    id
+})
+
 export const updateMapBounds = (payload) => async(dispatch)=>{
     const {mapBounds, mapFocus} = payload
     dispatch(loadMapBounds(mapBounds, mapFocus))
+}
+export const clickPinId = (id) =>async(dispatch) => {
+    dispatch(pinId(id))
 }
 
 
 const initialState = {
     mapBounds: [],
-    mapFocus: {}
+    mapFocus: {},
+    id: 0
 }
 
 const mapReducer = (state = initialState, action) => {

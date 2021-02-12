@@ -8,8 +8,6 @@ const MyPhotos= () => {
 
   return (
     <>
-      <div>This is my photos</div>
-      <SearchBar />
       <div className="Home__home-container">
         <div>
           <GoogleMap />

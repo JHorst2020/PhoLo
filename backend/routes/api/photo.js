@@ -30,7 +30,7 @@ router.get(
 
     // if (searchLat < 0) parseFloat(latBounds*=(-1))
     // if (searchLng < 0) parseFloat(lngBounds*=(-1))
-    console.log(searchLat, searchLng, dateRangeStart, dateRangeEnd, latBounds, lngBounds)
+    console.log("This is the search coordinates",   searchLat, searchLng, dateRangeStart, dateRangeEnd, latBounds, lngBounds)
     const nearbyPhotos = await Photo.findAll({
       where: {
         latitude: {
@@ -109,11 +109,12 @@ asyncHandler( async (req, res) => {
 )
 
 router.delete("/:id", asyncHandler(async (req, res) => {
-  const deletePhoto = Photo.destroy({
+  const deletePhoto = await Photo.destroy({
     where: {
       id: req.params.id
     }
   })
+  res.json(deletePhoto)
 }))
 
 

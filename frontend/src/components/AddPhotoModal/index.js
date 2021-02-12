@@ -12,6 +12,15 @@ import DialogActions from "@material-ui/core/DialogActions";
 // import DialogContent from "@material-ui/core/DialogContent";
 // import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    size: "large",
+    backgroundColor: "#2e9cca",
+    variant: "contained",
+  },
+}));
 
 const AddPhotoModal = () => {
   // const user_id = useSelector((state) => state.session.user.id)
@@ -19,6 +28,7 @@ const AddPhotoModal = () => {
   const photoData = useSelector((state) => state.photo.uploadedPhotoExif)
   const currentLocations = useSelector((state) => state.photo.locations)
   // console.log("this is the user_ID:     ", user_id)
+  const classes = useStyles();
 
   
   const [open, setOpen] = useState(false);
@@ -48,22 +58,30 @@ const AddPhotoModal = () => {
   }
 
   return (
-      <>
-    <Button
-      variant="outlined"
-      color="primary"
-      onClick={handleClickOpen}
-    >Add Photo</Button>
-    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-text">
+    <>
+        
+      <Button classes={{ root: classes.root }} color="primary" variant="contained" onClick={handleClickOpen}>
+        Add Photo
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-text"
+      >
         <DialogTitle id="form-dialog-title">Add Your Photo</DialogTitle>
         <DialogActions>
           <ImagePreview />
           {/* <Button variant="contained" component="label" onclick={handleSubmit} color="primary">Upload Photo<input type="file" id="file" accept=".jpg, .png, .heif, .heic" hidden /></Button> */}
-          <Button  id="file" component="label" color="primary">Upload Photo<ImageMeta /></Button>
-          <Button variant="contained" onClick={handleSubmit} color="primary">Submit</Button>
+          <Button id="file" component="label" color="primary" >
+            Upload Photo
+            <ImageMeta />
+          </Button>
+          <Button variant="contained" onClick={handleSubmit} color="primary" classes={{ root: classes.root }}>
+            Submit
+          </Button>
         </DialogActions>
-    </Dialog>
-</>
+      </Dialog>
+    </>
   );
 };
 
