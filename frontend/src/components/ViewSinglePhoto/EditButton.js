@@ -9,41 +9,42 @@ import DialogContent from "@material-ui/core/DialogContent";
 import TextField from "@material-ui/core/TextField";
 import { updatePhoto, deletePhoto} from "../../store/photo";
 
-export default function EditButton({ location }) {
+export default function EditButton() {
   // let stringDate = location.dateTime.toString()
   const currUser = useSelector((state) => state.session.user);
-  const locations = useSelector((state) => state.photo.locations);
-  let locIndex = locations.findIndex((obj) => obj.id === location.id);
+  // const locations = useSelector((state) => state.photo.locations);
   // const singlelocation = useSelector((state) => state.photo.locations[locIndex])
-  let stringDate = location.dateTime;
   const modalLocation= useSelector((state) => state.photo.locationModal)
-  if (location.dateTime.indexOf("T") > 0) {
-    stringDate = location.dateTime.slice(0, location.dateTime.indexOf("T"));
+  let stringDate = modalLocation.dateTime;
+  // let locIndex = locations.findIndex((obj) => obj.id === modalLocation.id);
+  if (modalLocation.dateTime.indexOf("T") > 0) {
+    stringDate = modalLocation.dateTime.slice(0, modalLocation.dateTime.indexOf("T"));
   }
   const id = modalLocation.id;
-  const user_id = location.user_id;
-  const locationName = location.locationName;
-  const streetNumber = location.streetNumber;
-  const streetName = location.streetName;
-  const city = location.city;
-  const state = location.state;
-  const zipcode = location.zipcode;
-  const photoUrl = location.photoUrl;
-  const photoThumbUrl = location.photoThumbUrl;
+  const user_id = modalLocation.user_id;
+  const locationName = modalLocation.locationName;
+  const streetNumber = modalLocation.streetNumber;
+  const streetName = modalLocation.streetName;
+  const city = modalLocation.city;
+  const state = modalLocation.state;
+  const zipcode = modalLocation.zipcode;
+  const photoUrl = modalLocation.photoUrl;
+  const photoThumbUrl = modalLocation.photoThumbUrl;
   const [updateDate, setDate] = useState(stringDate);
   const [open, setOpen] = useState(false);
-  const [updateLat, setLat] = useState(locations[locIndex].latitude);
-  const [updateLng, setLng] = useState(locations[locIndex].longitude);
-  const [updateTitle, setTitle] = useState(locations[locIndex].photoTitle);
+  const [updateLat, setLat] = useState(modalLocation.latitude);
+  const [updateLng, setLng] = useState(modalLocation.longitude);
+  const [updateTitle, setTitle] = useState(modalLocation.photoTitle);
   const [updateDescription, setDescription] = useState(
-    locations[locIndex].description
+    modalLocation.description
   );
   // const [updateDate, setDate] = useState(location.dateTime)
   // console.log(currUser)
   const dispatch = useDispatch();
-
+// console.log(updateLat, "       is update lat")
+// console.log("This is the location:     ", location)
   if (currUser !== undefined) {
-    if (currUser.id && currUser.id === location.user_id) {
+    if (currUser.id && currUser.id === modalLocation.user_id) {
       const handleClickOpen = () => {
         setOpen(true);
       };
@@ -71,13 +72,14 @@ export default function EditButton({ location }) {
         };
         setOpen(false);
         dispatch(updatePhoto(payload));
+        
     };
     const handleDelete = (e) => {
         e.preventDefault();
         const miniShift = Math.random()*1
         const payload = {id, searchLocation: [updateLat, updateLng, 3, miniShift]}
           setOpen(false);
-          console.log("This is payload id: ",id )
+          // console.log("This is payload id: ",id )
           dispatch(deletePhoto(payload))
       }
 
@@ -92,7 +94,7 @@ export default function EditButton({ location }) {
             aria-labelledby="form-dialog-text"
           >
             <DialogTitle id="form-dialog-title">
-              Update Photo Information
+              Update Photo Information 
             </DialogTitle>
             <DialogContent>
               <TextField
@@ -142,6 +144,7 @@ export default function EditButton({ location }) {
                 value={updateDate}
                 onChange={(e) => setDate(e.target.value)}
               />
+
             </DialogContent>
             <DialogActions>
               <Button onClick={handleSubmit} variant="outlined">

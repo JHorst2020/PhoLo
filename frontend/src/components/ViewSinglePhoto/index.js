@@ -24,9 +24,13 @@ const ViewSinglePhoto = ({location, isOpen=false}) => {
     const modalLocation = useSelector((state) => state.photo.locationModal)
     const searchLocation = useSelector((state) => state.photo.searchLocation)
   // console.log("is this the correct location?:     ",singlelocation)
-
+let stringDate = modalLocation.dateTime;
+//  if (modalLocation.dateTime.indexOf("T") > 0) {
+ if (modalLocation.dateTime) {
+    stringDate = modalLocation.dateTime.slice(0, modalLocation.dateTime.indexOf("T"));
+  }
      const handleClickOpen = () => {
-       const payload = {id, photoTitle, user_id, description, dateTime, locationName, streetNumber, streetName,city, state, zipcode, photoUrl, photoThumbUrl}
+       const payload = {id, photoTitle, user_id, description, dateTime, locationName, streetNumber, streetName,city, state, zipcode, photoUrl, photoThumbUrl, latitude, longitude}
     //  console.log("this is the locationid:    ",id)
     dispatch(updateLocationModal(payload))
     setOpen(true);
@@ -50,6 +54,8 @@ const ViewSinglePhoto = ({location, isOpen=false}) => {
    const photoUrl = location.photoUrl;
    const photoThumbUrl = location.photoThumbUrl;
    const description = location.description
+   const latitude = location.latitude
+   const longitude = location.longitude
    useEffect(() => {
      //    const payload = {id, photoTitle, user_id, description, dateTime, locationName, streetNumber, streetName,city, state, zipcode, photoUrl, photoThumbUrl}
      //    console.log("this is the locationid:    ",id)
@@ -62,6 +68,7 @@ const mouseOut = () => {
   document.getElementById(`map-pin-${location.id}`).removeAttribute("highlighted")
 }
 
+// console.log("location photothumb     ", location.photoThumbUrl, location.photoUrl)
 
 
 return (
@@ -69,21 +76,24 @@ return (
     {/* <div key={location.id} className="ImageThumb__photo" onMouseOver={mouseOver} onMouseOut={mouseOut}> */}
     <div id={`photothumb-${location.id}`} key={location.id} className="ImageThumb__photo pointer" onMouseOver={mouseOver} onMouseOut={mouseOut} >
     <div className="ImageContainer">
-        {location.photoThumbUrl ? <img src={location.photoThumbUrl} alt="nature" onClick={handleClickOpen} id={`photothumb-${location.id}`} className="thumb-image"/> : <img src={location.photoUrl} alt="nature" onClick={handleClickOpen} id={`photothumb-${location.id}`}className="thumb-image"/>}
+        {location.photoThumbUrl !== null ? <img src={location.photoThumbUrl} alt="Thumbnail1" onClick={handleClickOpen} id={`photothumb-${location.id}`} className="thumb-image"/> : <img src={location.photoUrl} alt="Thumbnail 2" onClick={handleClickOpen} id={`photothumb-${modalLocation.id}`}className="thumb-image"/>}
     </div>
     </div>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-text">
-            <Button onClick={handleClose}>{id}</Button>
+            {/* <Button onClick={handleClose}>Modal: {modalLocation.id}</Button> */}
+            <div className="modal-photo-container">
             <img src={modalLocation.photoUrl} style={photoStyle} className="modal-image" />
-            <h3>{modalLocation.photoTitle}</h3>
-            {modalLocation.description}
-            <DialogContentText>
-                Date: {modalLocation.dateTime}
-            </DialogContentText>
-                <DialogContentText > 
+            </div>
+            <div className="photo-title-text">{modalLocation.photoTitle}</div>
+            <div className="photo-description-text">{modalLocation.description}</div>
+            <div className="photo-date-text">{stringDate}</div>
+            {/* <DialogContentText>
+                Date: 
+            </DialogContentText> */}
+                {/* <DialogContentText > 
                     Location: {modalLocation.city}, {modalLocation.state}
-                    </DialogContentText>
-                    <EditButton location={location} />
+                    </DialogContentText> */}
+                    <EditButton />
         </Dialog>
     {/* </div> */}
   </>

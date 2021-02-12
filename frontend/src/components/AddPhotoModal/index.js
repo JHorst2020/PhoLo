@@ -27,30 +27,42 @@ const AddPhotoModal = () => {
   const currentUser = useSelector((state) => state.session)
   const photoData = useSelector((state) => state.photo.uploadedPhotoExif)
   const currentLocations = useSelector((state) => state.photo.locations)
+  const photoAddress = useSelector((state) => state.photo.photoLocationName)
   // console.log("this is the user_ID:     ", user_id)
   const classes = useStyles();
 
   
+  // console.log("this is in the addphoto:      ",photoData)
   const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [address, setAddress] = useState(photoAddress)
+  const [latitude, setLatitude] = useState("")
+  const [longitude, setLongitude] = useState("")
+  const [dateTime, setDateTime] = useState("")
 
+  if(photoData.image !== undefined){
+    // console.log(photoData)
+    setTitle()
+  }
 
   const dispatch = useDispatch();
   const handleClickOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
-
-
   };
+
+
   const handleSubmit = async (e) => {
       e.preventDefault();
       setOpen(false)
-      console.log("this is photoData:   ", photoData)
       const user_id = currentUser.user.id
-      const latitude = photoData.latitude
-      const longitude = photoData.longitude;
-      const dateTime = photoData.photoDate
+      // const latitude = photoData.latitude
+      // const longitude = photoData.longitude;
+      // const dateTime = photoData.photoDate
       const image = photoData.image
               
       dispatch(addNewPhoto({latitude, longitude, dateTime, image, user_id, currentLocations}))
@@ -63,16 +75,12 @@ const AddPhotoModal = () => {
       <Button classes={{ root: classes.root }} color="primary" variant="contained" onClick={handleClickOpen}>
         Add Photo
       </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="form-dialog-text"
-      >
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-text">
+        {photoData.image ? <div>Look, photodata, yaya</div> : <></>}
         <DialogTitle id="form-dialog-title">Add Your Photo</DialogTitle>
         <DialogActions>
           <ImagePreview />
-          {/* <Button variant="contained" component="label" onclick={handleSubmit} color="primary">Upload Photo<input type="file" id="file" accept=".jpg, .png, .heif, .heic" hidden /></Button> */}
-          <Button id="file" component="label" color="primary" >
+          <Button id="file" component="label" color="primary">
             Upload Photo
             <ImageMeta />
           </Button>

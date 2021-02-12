@@ -21,10 +21,11 @@ const loadSearchInfo = (locations, searchDateRange, searchLocation, searchLocati
   searchLocationName
 });
 
-const photoExif = (uploadedPhotoExif, searchLocation) => ({
+const photoExif = (uploadedPhotoExif, searchLocation, photoLocationName) => ({
   type: EXTRACT_EXIF_DATA,
   uploadedPhotoExif,
-  searchLocation
+  searchLocation,
+  photoLocationName
 });
 
 const updateCoords = (searchLocation) => ({
@@ -167,8 +168,14 @@ export const photoExifData = (exifDataPayload) => async (dispatch) => {
   const { latitude, longitude, photoDate, image, url } = exifDataPayload;
   console.log(exifDataPayload);
   const uploadedPhotoExif = { latitude, longitude, photoDate, image};
+  let photoLocationName = "Enter Address"
+  if(latitude !== 0 && longitude !== 0){
+    const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API}`)
+    const googleResults = await res.json()
+    photoLocationName = await googleResults.results[0].formatted_address;
+  }
   const searchLocation = [latitude, longitude, 6]
-  dispatch(photoExif(uploadedPhotoExif, searchLocation));
+  dispatch(photoExif(uploadedPhotoExif, searchLocation, photoLocationName));
 };
 
 const initialState = {
@@ -179,6 +186,7 @@ const initialState = {
   searchDateRange: ["1950-01-01", "2029-01-01"],
   // uploadedPhotoExif: {latitude: "", longitude:"", photoDate: "", image:"", url:""},
   uploadedPhotoExif: {},
+  photoLocationName: "",
 };
 
 const photoReducer = (state = initialState, action) => {
@@ -188,7 +196,8 @@ const photoReducer = (state = initialState, action) => {
       return {
         ...state,
         uploadedPhotoExif: action.uploadedPhotoExif,
-        searchLocation: action.searchLocation
+        searchLocation: action.searchLocation,
+        photoLocationName: action.photoLocationName
       };
     }
     case LOAD_NEARBY_PHOTOS: {

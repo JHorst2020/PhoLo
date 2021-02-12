@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const ProfileAvatar = () => {
   const userInfo = useSelector((state) => state.session.user);
 
-  if (userInfo=== undefined || userInfo.firstName===undefined) {
+  if (userInfo=== undefined ) {
     return <></>;
   } else {
     return (

@@ -64,7 +64,7 @@
   padding:0;
   display:flex;
   flex-direction: row;
-  height:100vh;
+  height:80vh;
 }
 *{
   margin:0;
@@ -137,4 +137,23 @@
   font-size: large;
   font-weight: bold;
   margin-right: 10px;
+}
+
+.photo-title-text{
+  font-size: large;
+  font-weight:bolder;
+  padding:10px;
+  text-transform: uppercase;
+  width:300px;
+}
+
+.photo-description-text{
+  padding:10px;
+}
+
+.photo-date-text{
+  padding:10px;
+  font-style: italic;
+  color: gray;
+  font-size: small;
 }

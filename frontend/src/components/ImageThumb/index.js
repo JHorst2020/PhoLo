@@ -23,32 +23,35 @@ const ImageThumb = () => {
         // console.log(payload)
         dispatch(getNearbyPhotos(payload))
     }, [mapBounds])
-    if(locations.length < 1){
+    if(locations.length > 0){
       return (
-        <div>
-          <div className="text-location-name">{searchLocationName}</div>
-          <div className="text-location-dates">
-            Between {searchDateRange[0]} and {searchDateRange[1]}
-          </div>
-          <div>Nothing cool I guess.... </div>
+        <>
           <div>
-            <img className="noPicZone" src={noPics} alt="no pics" />
+            <div className="text-location-name">{searchLocationName}</div>
+            <div className="text-location-dates">
+              Dates: {searchDateRange[0]} to {searchDateRange[1]}
+            </div>
           </div>
-        </div>
+          <div className="ImageThumb__photo-container">
+            {locations.map((location) => (
+              <ViewSinglePhoto location={location} />
+            ))}
+          </div>
+        </>
       );
+      
     }
 return (
-  <>
+  <div>
+    <div className="text-location-name">{searchLocationName}</div>
+    <div className="text-location-dates">
+      Between {searchDateRange[0]} and {searchDateRange[1]}
+    </div>
+    {/* <div>Nothing cool I guess.... </div> */}
     <div>
-      <div className="text-location-name">{searchLocationName}</div>
-      <div className="text-location-dates">Dates: {searchDateRange[0]} to {searchDateRange[1]}</div>
+      <img className="noPicZone" src={noPics} alt="no pics" />
     </div>
-    <div className="ImageThumb__photo-container">
-        {locations.map((location) => (
-          <ViewSinglePhoto location={location} />
-                ))}
-    </div>
-  </>
+  </div>
 );
 }
 

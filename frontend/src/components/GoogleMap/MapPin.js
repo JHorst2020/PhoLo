@@ -32,10 +32,10 @@ const MapPin = ({id, photoUrl, lat, lng, location}) => {
         document.getElementById(`photothumb-${id}`).removeAttribute('highlighted-blue')
 
     }
-    // const pinClick = () => {
-    //     console.log("this is the target value", location)
-  
-    // }
+    const pinClick = () => {
+        document.getElementById(`photothumb-${id}`).scrollIntoView()
+        // console.log("We are here fam")
+    }
     
     return (
       <>
@@ -44,9 +44,11 @@ const MapPin = ({id, photoUrl, lat, lng, location}) => {
           className="mapPin"
           onMouseOver={showInfoBox}
           onMouseOut={hideInfoBox}
+          onClick={pinClick}
         >
         </div>
         <div id={`info-box-${id}`} hidden>
+          {/* <h4>{id}</h4> */}
           <img className="map-info-box" src={photoUrl} alt="noPhoto"></img>
         </div>
       </>

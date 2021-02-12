@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
-    height: 80vh;
+    height: 75vh;
     align-content: flex-start;
     
     
@@ -32,8 +32,16 @@
     object-fit:cover;
 }
 
+.modal-photo-container{
+    display:flex;
+    justify-content:center;
+}
+
 .modal-image {
-    max-height: 75vh
+    max-height: 75vh;
+    /* padding:10px; */
+    /* width: auto; */
+    /* object-fit:cover; */
 }
 
 /* .Home__home-container{
