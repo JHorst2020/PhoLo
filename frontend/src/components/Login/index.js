@@ -183,6 +183,7 @@ const LoginModal = () => {
                       allowEmptyFormatting
                       mask="_"
                       onChange={(e) => lazyphone(e.target.value)}
+                      style={{ padding: "10px" }}
                     />
 
                     <Button onClick={generateDigits} color="Primary">

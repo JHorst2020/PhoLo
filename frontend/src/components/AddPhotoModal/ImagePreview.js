@@ -8,7 +8,7 @@ let picstyle = {
 const ImagePreview =() => {
     const imagePreview = useSelector((state)=> state.photo.uploadedPhotoExif)
     useEffect(() => {
-        // console.log(" this is the image preview url:    ", imagePreview)
+        console.log(" this is the image preview url:    ")
     },[imagePreview])
     let url
     if(imagePreview.image){
@@ -17,7 +17,7 @@ const ImagePreview =() => {
     }
     return (
         <>
-        <div>
+        <div style={{display:"flex", justifyContent:"center"}}>
             <img className="image-preview" src={url} style={picstyle}></img>
         </div>
         </>

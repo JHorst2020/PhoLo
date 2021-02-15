@@ -47,83 +47,85 @@ const Navbar = () => {
         <NavLink to="/">
           <img src={logo} className="logo-image" />
         </NavLink>
+          <div style={{display:"flex", flexDirection:"row", alignItems:"center", flexWrap:"wrap", marginRight:"50px"}}>
         <div className="navBarWrapper">
-          <NavLink to="/" className="navBarCssButton">
-            <Button
-              classes={{ root: classes.root }}
-              variant="contained"
-              color="primary"
-            >
-              Home
-            </Button>
-          </NavLink>
-          {user ? (
-            ""
-          ) : (
-            <NavLink to="/signup" className="navBarCssButton">
+            <NavLink to="/" className="navBarCssButton">
               <Button
                 classes={{ root: classes.root }}
                 variant="contained"
                 color="primary"
               >
-                Create User
+                Home
               </Button>
             </NavLink>
-          )}
-          <NavLink to="/users" className="navBarCssButton">
-            <Button
-              classes={{ root: classes.root }}
-              variant="contained"
-              color="primary"
-            >
-              All Users
-            </Button>
-          </NavLink>
-          {/* <button onClick={handleLogout}>{user ? "Logout" : "Login"}</button> */}
-          {user ? (
-            <NavLink to="/myPhotos" className="navBarCssButton">
+            {user ? (
+              ""
+            ) : (
+              <NavLink to="/signup" className="navBarCssButton">
+                <Button
+                  classes={{ root: classes.root }}
+                  variant="contained"
+                  color="primary"
+                >
+                  Create User
+                </Button>
+              </NavLink>
+            )}
+            <NavLink to="/users" className="navBarCssButton">
               <Button
                 classes={{ root: classes.root }}
                 variant="contained"
                 color="primary"
               >
-                My Photos
+                All Users
               </Button>
             </NavLink>
-          ) : (
-            ""
-          )}
+            {/* <button onClick={handleLogout}>{user ? "Logout" : "Login"}</button> */}
+            {user ? (
+              <NavLink to="/myPhotos" className="navBarCssButton">
+                <Button
+                  classes={{ root: classes.root }}
+                  variant="contained"
+                  color="primary"
+                >
+                  My Photos
+                </Button>
+              </NavLink>
+            ) : (
+              ""
+            )}
 
-          {user ? (
-            <div className="navBarCssButton">
-              <AddPhotoModal margin="50px" />{" "}
-            </div>
-          ) : (
-            ""
-          )}
+            {user ? (
+              <div className="navBarCssButton">
+                <AddPhotoModal margin="50px" />{" "}
+              </div>
+            ) : (
+              ""
+            )}
 
-          {user ? (
-            <div className="navBarCssButton">
-              <Button
-                onClick={handleLogout}
-                classes={{ root: classes.root }}
-                variant="contained"
-                color="primary"
-              >
-                Logout
-              </Button>{" "}
-            </div>
-          ) : (
-            <Login className="navBarCssButton" />
-          )}
+            {user ? (
+              <div className="navBarCssButton">
+                <Button
+                  onClick={handleLogout}
+                  classes={{ root: classes.root }}
+                  variant="contained"
+                  color="primary"
+                >
+                  Logout
+                </Button>{" "}
+              </div>
+            ) : (
+              <Login className="navBarCssButton" />
+            )}
+          </div>
           <div className="navBarCssButton">
             <SearchBar />
           </div>
         </div>
       </div>
-        <div className="avatarContainer">
-          <ProfileAvatar />
-        </div>
+      <div className="avatarContainer">
+        <ProfileAvatar />
+      </div>
     </div>
 
     // </NavWrapper>

@@ -64,38 +64,42 @@ router.get("/myPhoto/:userId",
 )
 
 router.put("/update", asyncHandler (async (req, res) => {
-  const {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = req.body
-  console.log("this is req.body:     ",city)
-  const updatedPhoto = await Photo.update({
-    city: city,
-    locationName: locationName,
-    photoUrl: photoUrl,
-    photoThumbUrl: photoThumbUrl,
-    state: state,
-    streetName: streetName,
-    streetNumber: streetNumber,
-    dateTime: updateDate,
-    description: updateDescription,
-    latitude: updateLat,
-    longitude: updateLng,
-    photoTitle: updateTitle,
-    zipcode: zipcode,
-    user_id: user_id,
-  },
+  const {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, dateTime, latitude, longitude, photoTitle, description, photoUrl, photoThumbUrl} = req.body
+  // console.log("this is req.body:     ",city)
+  
+
+    const updatedPhoto = await Photo.update({
+      city: city,
+      locationName: locationName,
+      photoUrl: photoUrl,
+      photoThumbUrl: photoThumbUrl,
+      state: state,
+      streetName: streetName,
+      streetNumber: streetNumber,
+      dateTime: dateTime,
+      description: description,
+      latitude: latitude,
+      longitude: longitude,
+      photoTitle: photoTitle,
+      zipcode: zipcode,
+      user_id: user_id,
+    },
     {where:{id: id},
     returning: true,
     plain: true
   })
   
   return res.json(updatedPhoto);
+
 }
 ))
 
 router.post('/add',
 singleMulterUpload("image"),
 asyncHandler( async (req, res) => {
-    const { latitude, longitude, dateTime, user_id } = req.body;
-    console.log(req.body)
+    const { latitude, longitude, dateTime, user_id, locationName, photoTitle, description } = req.body;
+   
+
     const photoUrl = await singlePublicFileUpload(req.file)
     const newPhoto = await Photo.create({ 
         latitude,
@@ -103,6 +107,9 @@ asyncHandler( async (req, res) => {
         dateTime,
         user_id,
         photoUrl,
+        locationName,
+        photoTitle,
+        description
     })
     res.json(newPhoto)
 })

@@ -5,14 +5,12 @@ import {useSelector} from "react-redux"
 
 
 const Home = () => {
-  const reloadProp = useSelector((state) => state.photo.searchLocation)
   return (
     <>
-      
       {/* <SearchBar /> */}
       <div className="Home__home-container">
         <div>
-          <GoogleMap reloadProp={reloadProp}/>
+          <GoogleMap  />
         </div>
 
         <div>

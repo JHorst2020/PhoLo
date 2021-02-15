@@ -34,6 +34,7 @@ export default function EditButton() {
   const [open, setOpen] = useState(false);
   const [updateLat, setLat] = useState(modalLocation.latitude);
   const [updateLng, setLng] = useState(modalLocation.longitude);
+  const [updateLoc, setLoc] = useState(locationName)
   const [updateTitle, setTitle] = useState(modalLocation.photoTitle);
   const [updateDescription, setDescription] = useState(
     modalLocation.description
@@ -43,6 +44,7 @@ export default function EditButton() {
   const dispatch = useDispatch();
 // console.log(updateLat, "       is update lat")
 // console.log("This is the location:     ", location)
+console.log("this is the open state:     ", open)
   if (currUser !== undefined) {
     if (currUser.id && currUser.id === modalLocation.user_id) {
       const handleClickOpen = () => {
@@ -69,18 +71,19 @@ export default function EditButton() {
           updateDescription,
           photoUrl,
           photoThumbUrl,
+          updateLoc
         };
+        // console.log("updateTitle in editButton.js:     ", updateTitle)
         setOpen(false);
         dispatch(updatePhoto(payload));
         
     };
     const handleDelete = (e) => {
-        e.preventDefault();
-        const miniShift = Math.random()*1
-        const payload = {id, searchLocation: [updateLat, updateLng, 3, miniShift]}
-          setOpen(false);
-          // console.log("This is payload id: ",id )
-          dispatch(deletePhoto(payload))
+        // e.preventDefault();
+        
+        const payload = {id, searchLocation: [updateLat, updateLng, 3]}
+        
+        dispatch(deletePhoto(payload))
       }
 
       return (
@@ -94,7 +97,7 @@ export default function EditButton() {
             aria-labelledby="form-dialog-text"
           >
             <DialogTitle id="form-dialog-title">
-              Update Photo Information 
+              Update Photo Information
             </DialogTitle>
             <DialogContent>
               <TextField
@@ -119,22 +122,14 @@ export default function EditButton() {
               />
               <TextField
                 margin="dense"
-                id="latitude"
-                label="Latitude"
+                id="location"
+                label="Location"
                 fullWidth
                 variant="outlined"
-                value={updateLat}
-                onChange={(e) => setLat(e.target.value)}
+                value={updateLoc}
+                onChange={(e) => setLoc(e.target.value)}
               />
-              <TextField
-                margin="dense"
-                id="longitude"
-                label="Longitude"
-                fullWidth
-                variant="outlined"
-                value={updateLng}
-                onChange={(e) => setLng(e.target.value)}
-              />
+
               <TextField
                 margin="dense"
                 id="dateTime"
@@ -144,9 +139,11 @@ export default function EditButton() {
                 value={updateDate}
                 onChange={(e) => setDate(e.target.value)}
               />
-
             </DialogContent>
+            
+
             <DialogActions>
+              
               <Button onClick={handleSubmit} variant="outlined">
                 Update
               </Button>
@@ -157,7 +154,8 @@ export default function EditButton() {
             color="secondary"
             onClick={handleDelete}
             style={{ "margin-bottom": "10px" }}
-          >
+            type="submit"
+            >
             <i class="fas fa-trash-alt"></i>
           </Button>
         </>

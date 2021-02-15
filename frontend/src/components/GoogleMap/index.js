@@ -46,7 +46,7 @@ const GoogleMap = () => {
     latBounds = Math.abs((e.marginBounds.sw.lat - e.marginBounds.ne.lat)*0.49);
     lngBounds = Math.abs((e.marginBounds.sw.lng - e.marginBounds.ne.lng)*0.5);
     center = e.center
-    console.log("this is center    ",center )
+    // console.log("this is center    ",center )
     dispatch(updateMapBounds({mapBounds: [latBounds, lngBounds], mapFocus: center}))
   }
   return (
@@ -55,8 +55,8 @@ const GoogleMap = () => {
         <Map>
           <GoogleMapReact 
             bootstrapURLKeys={{
-              // key: `${process.env.REACT_APP_GOOGLE_API}`,
-              key: `${process.env.REACT_APP_GOOGLE_API_DEVELOPMENT}`,
+              key: `${process.env.REACT_APP_GOOGLE_API}`,
+              // key: `${process.env.REACT_APP_GOOGLE_API_DEVELOPMENT}`,
               
             }}
             center={{

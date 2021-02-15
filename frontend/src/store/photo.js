@@ -114,13 +114,28 @@ export const searchByLocation = (payload) => async (dispatch) => {
 // }
 
 export const addNewPhoto = (photo) => async (dispatch) => {
-  const { latitude, longitude, dateTime, image, user_id, currentLocations } = photo;
+  const { latitude, longitude, dateTime, image, user_id, photoTitle, description } = photo;
+  let locationName
+  if (latitude !== 0 && longitude !== 0) {
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API}`
+      );
+      const googleResults = await response.json();
+      locationName = await googleResults.results[0].formatted_address;
+      console.log("this is the formatted address:     ", locationName)
+
+  } else {
+    locationName = "Add Address"
+  }
   const formData = new FormData();
   formData.append("latitude", latitude);
   formData.append("longitude", longitude);
   formData.append("dateTime", dateTime);
   formData.append("image", image);
   formData.append("user_id", user_id);
+  formData.append("locationName", locationName)
+  formData.append("description", description)
+  formData.append("photoTitle", photoTitle)
 
   const res = await fetchy("/api/photo/add", {
     method: "POST",
@@ -132,17 +147,27 @@ export const addNewPhoto = (photo) => async (dispatch) => {
 };
 export const updatePhoto = (payload) => async(dispatch) => {
   // const{id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = payload
-  const res = await fetchy ("/api/photo/update", {
-    method: "PUT",
-    headers: {
-      'Content-Type' : "application/json"
-    },
-    body: JSON.stringify(payload)
-  })
-  const {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = payload;
-  const updatedInfo = {
+  const {id, updateLoc, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = payload;
+  console.log("this is the payload incoming:       ", payload)
+  let newAddressName = locationName
+  let newLat = updateLat
+  let newLng = updateLng
+  if (updateLoc !== locationName) {
+    let spaceRemover = updateLoc.split(" ").join("+");
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${spaceRemover}&key=${process.env.REACT_APP_GOOGLE_API}`
+    );
+      const googleResults = await response.json();
+      // newAddressName = await googleResults.results[0];
+      newAddressName = await googleResults.results[0].formatted_address;
+      newLat = await googleResults.results[0].geometry.location.lat;
+      newLng = await googleResults.results[0].geometry.location.lng;
+    }
+    // console.log("this is the photoTitle:      ", updateTitle)
+  const dBpayload = {
     city: city,
-    locationName: locationName,
+    locationName: newAddressName,
+    photoTitle: updateTitle,
     photoUrl: photoUrl,
     photoThumbUrl: photoThumbUrl,
     state: state,
@@ -150,13 +175,21 @@ export const updatePhoto = (payload) => async(dispatch) => {
     streetNumber: streetNumber,
     dateTime: updateDate,
     description: updateDescription,
-    latitude: updateLat,
-    longitude: updateLng,
-    photoTitle: updateTitle,
+    latitude: newLat,
+    longitude: newLng,
     zipcode: zipcode,
     user_id: user_id,
+    id: id
   };
-  dispatch(updateSinglePhoto(updatedInfo))
+  // console.log("this is th dBpayload:       ",dBpayload)
+  const res = await fetchy ("/api/photo/update", {
+    method: "PUT",
+    headers: {
+      'Content-Type' : "application/json"
+    },
+    body: JSON.stringify(dBpayload)
+  })
+  dispatch(updateSinglePhoto(dBpayload))
 return res
 }
 
@@ -166,16 +199,9 @@ export const updateLocationModal = (payload) => async(dispatch) => {
 
 export const photoExifData = (exifDataPayload) => async (dispatch) => {
   const { latitude, longitude, photoDate, image, url } = exifDataPayload;
-  console.log(exifDataPayload);
   const uploadedPhotoExif = { latitude, longitude, photoDate, image};
-  let photoLocationName = "Enter Address"
-  if(latitude !== 0 && longitude !== 0){
-    const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API}`)
-    const googleResults = await res.json()
-    photoLocationName = await googleResults.results[0].formatted_address;
-  }
   const searchLocation = [latitude, longitude, 6]
-  dispatch(photoExif(uploadedPhotoExif, searchLocation, photoLocationName));
+  dispatch(photoExif(uploadedPhotoExif, searchLocation));
 };
 
 const initialState = {
@@ -183,9 +209,9 @@ const initialState = {
   locationModal: [],
   searchLocationName: ["Nearby Photos"],
   searchLocation: [36.1699, -115.1398, 3],
-  searchDateRange: ["1950-01-01", "2029-01-01"],
+  searchDateRange: ["1950-01-01", "2021-02-01"],
   // uploadedPhotoExif: {latitude: "", longitude:"", photoDate: "", image:"", url:""},
-  uploadedPhotoExif: {},
+  uploadedPhotoExif: {photoDate:"2016-01-20", latitude: 0, longitude:0},
   photoLocationName: "",
 };
 

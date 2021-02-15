@@ -20,18 +20,14 @@ const ViewSinglePhoto = ({location, isOpen=false}) => {
     const [open, setOpen] = useState(isOpen);
       const locations = useSelector((state) => state.photo.locations);
       let locIndex = locations.findIndex((obj) => obj.id === location.id);
-    // const singlelocation = useSelector((state) => state.photo.locations[locIndex])
     const modalLocation = useSelector((state) => state.photo.locationModal)
     const searchLocation = useSelector((state) => state.photo.searchLocation)
-  // console.log("is this the correct location?:     ",singlelocation)
 let stringDate = modalLocation.dateTime;
-//  if (modalLocation.dateTime.indexOf("T") > 0) {
  if (modalLocation.dateTime) {
     stringDate = modalLocation.dateTime.slice(0, modalLocation.dateTime.indexOf("T"));
   }
      const handleClickOpen = () => {
        const payload = {id, photoTitle, user_id, description, dateTime, locationName, streetNumber, streetName,city, state, zipcode, photoUrl, photoThumbUrl, latitude, longitude}
-    //  console.log("this is the locationid:    ",id)
     dispatch(updateLocationModal(payload))
     setOpen(true);
     dispatch(updateSearchCoord({searchLocation: [location.latitude,location.longitude,5]}))
@@ -56,11 +52,7 @@ let stringDate = modalLocation.dateTime;
    const description = location.description
    const latitude = location.latitude
    const longitude = location.longitude
-   useEffect(() => {
-     //    const payload = {id, photoTitle, user_id, description, dateTime, locationName, streetNumber, streetName,city, state, zipcode, photoUrl, photoThumbUrl}
-     //    console.log("this is the locationid:    ",id)
-     //   dispatch(updateLocationModal(payload))
-   },[searchLocation])
+
 const mouseOver = () => {
   document.getElementById(`map-pin-${location.id}`).setAttribute("highlighted", true)
 }
