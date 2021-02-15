@@ -19,7 +19,7 @@ const ImagePreview =() => {
     }
     return (
         <>
-        <div style={{display:"flex", justifyContent:"center"}}>
+        <div style={{display:"flex", justifyContent:"center", minWidth:"400px"}}>
             <img className="image-preview" src={url} style={picstyle}></img>
         </div>
         </>
