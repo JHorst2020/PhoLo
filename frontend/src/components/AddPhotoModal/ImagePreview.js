@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import {useSelector} from 'react-redux'
 
 let picstyle = {
-    height: "400px"
+    height: "auto",
+    maxWidth:"400px",
+    maxHeight:"400px"
 }
 
 const ImagePreview =() => {

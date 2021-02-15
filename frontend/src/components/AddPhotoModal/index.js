@@ -77,10 +77,11 @@ const AddPhotoModal = () => {
   }
 
   return (
-    <>
+    <div>
       <Button classes={{ root: classes.root }} color="primary" variant="contained" onClick={handleClickOpen}>
         Add Photo
       </Button>
+      <div >
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-text">
         <div style={{backgroundColor:"#29648A", color:"white", fontSize:"24px", padding:"10px"}}> ADD YOUR PHOTO
           {/* <DialogTitle id="form-dialog-title">Add Your Photo</DialogTitle> */}
@@ -90,7 +91,7 @@ const AddPhotoModal = () => {
           <div style={{display:"flex", flexFlow:"column", justifyContent:"center"}}>
           <ImagePreview />
         {photoData.image ? 
-        <div style={{display:"flex", flexFlow:"column", width:"500px"}}>
+        <div style={{display:"flex", flexFlow:"column"}}>
           <div style={{margin:"10px"}}></div>
           
           <TextField id="photoTitle" label="Title" fullwidth variant="outlined" value={photoTitle} onChange={(e) => setTitle(e.target.value)} />
@@ -119,7 +120,8 @@ const AddPhotoModal = () => {
         </DialogActions>
         </div>
       </Dialog>
-    </>
+      </div>
+    </div>
   );
 };
 
