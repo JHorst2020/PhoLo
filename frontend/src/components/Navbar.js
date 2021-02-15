@@ -71,7 +71,7 @@ const Navbar = () => {
                 </Button>
               </NavLink>
             )}
-            <NavLink to="/users" className="navBarCssButton">
+            {/* <NavLink to="/users" className="navBarCssButton">
               <Button
                 classes={{ root: classes.root }}
                 variant="contained"
@@ -79,7 +79,7 @@ const Navbar = () => {
               >
                 All Users
               </Button>
-            </NavLink>
+            </NavLink> */}
             {/* <button onClick={handleLogout}>{user ? "Logout" : "Login"}</button> */}
             {user ? (
               <NavLink to="/myPhotos" className="navBarCssButton">
