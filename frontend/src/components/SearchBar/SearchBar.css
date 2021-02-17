@@ -2,6 +2,7 @@
     /* background-color:#464866; */
     display:flex;
     align-items:center;
+    justify-content:space-around;
     
 }
 .search-bar-text-field{

@@ -16,8 +16,8 @@ const Map = styled.div`
 `;
 
 const MapComponentContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
+  // display: flex;
+  // align-items: flex-start;
   // padding: 30px 20px;
   height:100%;
   width:100%;
@@ -26,7 +26,7 @@ const MapComponentContainer = styled.div`
 
 const MapContainer = styled.div`
   padding: 0px;
-  display: flex;
+  // display: flex;
   border: 1px solid transparent;
   width: 100%;
   height: 100%;

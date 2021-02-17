@@ -47,7 +47,7 @@ const SearchBar = () => {
 
     return (
         <div className="search-bar" >
-            <form onSubmit={submitForm} style={{display:"flex", flexDirection:"row", }}>
+            <form onSubmit={submitForm} style={{display:"flex", flexDirection:"row", justifyContent: "space-around"}}>
                 
                 <div>
                   <TextField margin="dense" variant="filled" label="Where?" className="search-bar-text-field" value={location} onChange={(e) => setLocation(e.target.value)} boxShadow={0} required/>
@@ -55,7 +55,7 @@ const SearchBar = () => {
                 <div>
                   <TextField InputLabelProps={{ shrink: true }} margin="dense" variant="filled" type="date" className="search-bar-text-field" label="Start Date" value={dateRangeStart} onChange={(e)=> setDateRangeStart(e.target.value)} required/>
                 </div>
-                <div>
+                <div style={{fontSize:"small"}}>
                   <TextField InputLabelProps={{ shrink: true }}margin="dense" variant="filled" type="date" className="search-bar-text-field" label="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} required/>
                 </div>
                 <div>
@@ -63,13 +63,7 @@ const SearchBar = () => {
                 </div>
                 
             </form>
-            <div>
-                {/* <button>Choose File<ImageMeta /></button> */}
-                {/* <ImageMeta /> */}
-            </div>
-            {/* <div className="custom-search-button-container">
-            {user ? <AddPhotoModal /> : ""}
-            </div> */}
+            
         </div>
     )
 

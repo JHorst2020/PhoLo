@@ -20,7 +20,7 @@ import About from "../components/About"
 // `;
 const useStyles = makeStyles(theme => ({
   root: {
-    size: "large",
+    size: "small",
     backgroundColor: "#2e9cca",
     variant: "contained",
   }
@@ -44,13 +44,15 @@ const Navbar = () => {
   return (
     // <NavWrapper>
     <div className="outterNavContainer">
-      <div className="navContainer">
+        <div style={{flex:"1"}}>
         <NavLink to="/">
-          <img src={logo} className="logo-image" />
+          <img src={logo} className="logo-image"  />
         </NavLink>
+          </div>
+      <div className="navContainer">
           <div style={{display:"flex", flexDirection:"row", alignItems:"center", flexWrap:"wrap", marginRight:"50px"}}>
         <div className="navBarWrapper">
-            <NavLink to="/" className="navBarCssButton">
+            {/* <NavLink to="/" className="navBarCssButton">
               <Button
                 classes={{ root: classes.root }}
                 variant="contained"
@@ -58,7 +60,7 @@ const Navbar = () => {
               >
                 Home
               </Button>
-            </NavLink>
+            </NavLink> */}
             {user ? (
               ""
             ) : (
@@ -72,16 +74,6 @@ const Navbar = () => {
                 </Button>
               </NavLink>
             )}
-            {/* <NavLink to="/users" className="navBarCssButton">
-              <Button
-                classes={{ root: classes.root }}
-                variant="contained"
-                color="primary"
-              >
-                All Users
-              </Button>
-            </NavLink> */}
-            {/* <button onClick={handleLogout}>{user ? "Logout" : "Login"}</button> */}
             {user ? (
               <NavLink to="/myPhotos" className="navBarCssButton">
                 <Button
@@ -98,7 +90,7 @@ const Navbar = () => {
 
             {user ? (
               <div className="navBarCssButton">
-                <AddPhotoModal margin="50px" />{" "}
+                <AddPhotoModal />{" "}
               </div>
             ) : (
               ""
@@ -118,16 +110,16 @@ const Navbar = () => {
             ) : (
               <Login className="navBarCssButton" />
             )}
-          </div>
           <div className="navBarCssButton">
             <About />
           </div>
-          <div className="navBarCssButton">
+          </div>
+          <div className="navBarCssButton" style={{flex:"1"}}>
             <SearchBar />
           </div>
         </div>
       </div>
-      <div className="avatarContainer">
+      <div style={{flex:"1"}}>
         <ProfileAvatar />
       </div>
     </div>

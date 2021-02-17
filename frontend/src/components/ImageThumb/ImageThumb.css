@@ -4,7 +4,8 @@
     overflow: scroll;
     /* height: 75vh; */
     align-content: flex-start;
-    flex:2;
+    width: 100%;
+    /* flex:2; */
     
     
 }
@@ -75,6 +76,6 @@ img[highlighted]{
 }
 
 .noPicZone{
-    height: 74vh;
+    height: 100%;
     width: auto;
 }
