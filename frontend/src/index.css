@@ -136,8 +136,8 @@
   display:flex;
   width:100vw;
   /* justify-content:space-between; */
-  /* background-color:#29648a; */
-  background-color: pink;
+  background-color:#29648a;
+  /* background-color: pink; */
 
 }
 
@@ -172,9 +172,5 @@
     display: flex;
     flex-direction: column;
     /* flex-wrap: wrap; */
-  }
-
-  .outterNavContainer{
-    width:200vw
   }
 }
