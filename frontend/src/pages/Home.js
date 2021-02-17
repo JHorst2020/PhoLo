@@ -6,18 +6,18 @@ import {useSelector} from "react-redux"
 
 const Home = () => {
   return (
-    <>
+    <div style={{ height:"100vh", backgroundColor: "#f8f8ff"}}>
       {/* <SearchBar /> */}
-      <div className="Home__home-container">
-        <div>
-          <GoogleMap  />
+      <div className="Home__home-container" style={{ display: "flex" }}>
+        <div style={{ flex: "1", height: "100%" }}>
+          <GoogleMap />
         </div>
 
-        <div>
+        <div style={{ flex: "5", height: "100%" }}>
           <ImageThumb />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -62,7 +62,7 @@ function ImageMeta() {
       <input
         type="file"
         id="file"
-        accept=".jpg, .png, .heif, .heic"
+        accept=".jpg, .png, .heif, .heic, .gif"
         onChange={handleChange}
         hidden
       />

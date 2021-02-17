@@ -7,27 +7,29 @@ import {updateMapBounds} from "../../store/map"
 import {updateSearchCoord} from "../../store/photo"
 
 const Map = styled.div`
-  width: 500px;
-  height: 80vh;
+  width:100%;
+  height: 100%;
   padding: 0px;
   border: 1px solid transparent;
   position: relative;
+  
 `;
 
 const MapComponentContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  padding: 30px 20px;
+  // padding: 30px 20px;
+  height:100%;
+  width:100%;
 `;
 
 
 const MapContainer = styled.div`
-  max-width: 100%;
-  height: 800px;
   padding: 0px;
   display: flex;
   border: 1px solid transparent;
-  // margin-bott0m: 100px;
+  width: 100%;
+  height: 100%;
 `;
 
 const GoogleMap = () => {

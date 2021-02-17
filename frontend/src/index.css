@@ -157,3 +157,11 @@
   color: gray;
   font-size: small;
 }
+
+@media only screen and (max-width: 600px) {
+  .Home__home-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}

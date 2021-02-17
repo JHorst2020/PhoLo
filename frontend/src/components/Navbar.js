@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import AddPhotoModal from "../components/AddPhotoModal";
 import ProfileAvatar from "../components/ProfileAvatar";
 import logo from "../assets/logo.png"
+import About from "../components/About"
 
 
 // styled components are great. I recommend you looking into them!
@@ -117,6 +118,9 @@ const Navbar = () => {
             ) : (
               <Login className="navBarCssButton" />
             )}
+          </div>
+          <div className="navBarCssButton">
+            <About />
           </div>
           <div className="navBarCssButton">
             <SearchBar />

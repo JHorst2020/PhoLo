@@ -33,7 +33,7 @@ const MapPin = ({id, photoUrl, lat, lng, location}) => {
 
     }
     const pinClick = () => {
-        document.getElementById(`photothumb-${id}`).scrollIntoView()
+        document.getElementById(`photothumb-${id}`).scrollIntoView(false)
         // console.log("We are here fam")
     }
     

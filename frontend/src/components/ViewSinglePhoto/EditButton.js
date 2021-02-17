@@ -45,7 +45,7 @@ export default function EditButton() {
 // console.log(updateLat, "       is update lat")
 // console.log("This is the location:     ", location)
 console.log("this is the open state:     ", open)
-  if (currUser !== undefined) {
+  if (currUser !== undefined && currUser!== null) {
     if (currUser.id && currUser.id === modalLocation.user_id) {
       const handleClickOpen = () => {
         setOpen(true);

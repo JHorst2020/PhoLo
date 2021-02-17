@@ -2,8 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
-    height: 75vh;
+    /* height: 75vh; */
     align-content: flex-start;
+    flex:2;
     
     
 }

@@ -3,7 +3,6 @@ import { createUser } from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import NumberFormat from "react-number-format";
 import ImagePreview from "../components/AddPhotoModal/ImagePreview"
-
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -40,6 +39,7 @@ const CreateUser = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     let phoneNumber = parseInt(phoneNumberString)
     // console.log(phoneNumber)
     // console.log(typeof phoneNumber)
@@ -158,7 +158,7 @@ const lazyphone = (e) => {
             <div style={{ marginRight: "20px", color: "gray" }}>
               Profile Photo:
             </div>
-            <input type="file" onChange={updateFile} />
+            <input type="file" onChange={updateFile} required/>
           </span>
         </label>
         {/* <label>
