@@ -32,13 +32,7 @@ const SearchBar = () => {
     const mapBounds = useSelector((state) => state.map.mapBounds);
     const mapCenter = useSelector((state) => state.map.mapFocus);
     const user = useSelector((state) => state.session.user)
- console.log("this is screen width:       ", window.screen.width)
-    let screenCheck
-    if (window.screen.width > 850){
-      screenCheck = true
-    } else {
-      screenCheck = false
-    }
+
     const submitForm = async(e) => {
         e.preventDefault()
         
@@ -59,10 +53,10 @@ const SearchBar = () => {
 
             
               
-                  <TextField id="searchDateStart" InputLabelProps={{ shrink: screenCheck }} margin="dense" variant="filled" type="date" className="search-bar-text-field" label="Start Date" value={dateRangeStart} onChange={(e)=> setDateRangeStart(e.target.value)} required/>
+                  <TextField id="searchDateStart" InputLabelProps={{ shrink: true }} margin="dense" variant="filled" type="date" className="search-bar-text-field" label="Start Date" value={dateRangeStart} onChange={(e)=> setDateRangeStart(e.target.value)} required/>
                 
              
-                  <TextField id="searchDateEnd" InputLabelProps={{ shrink: screenCheck }}margin="dense" variant="filled" type="date" className="search-bar-text-field" label="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} required/>         
+                  <TextField id="searchDateEnd" InputLabelProps={{ shrink: true }}margin="dense" variant="filled" type="date" className="search-bar-text-field" label="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} required/>         
                 </div>
                 
 
