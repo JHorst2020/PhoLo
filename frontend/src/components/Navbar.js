@@ -10,6 +10,7 @@ import AddPhotoModal from "../components/AddPhotoModal";
 import ProfileAvatar from "../components/ProfileAvatar";
 import logo from "../assets/logo.png"
 import About from "../components/About"
+import AppBar from '@material-ui/core/AppBar';
 
 
 // styled components are great. I recommend you looking into them!
@@ -42,25 +43,26 @@ const Navbar = () => {
   
 
   return (
-    // <NavWrapper>
+    <AppBar position="sticky">
     <div className="outterNavContainer">
-        <div style={{flex:"1"}}>
+        <div>
         <NavLink to="/">
           <img src={logo} className="logo-image"  />
         </NavLink>
           </div>
       <div className="navContainer">
-          <div style={{display:"flex", flexDirection:"row", alignItems:"center", flexWrap:"wrap", marginRight:"50px"}}>
+          <div style={{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"flex-start", flexWrap:"wrap", marginRight:"50px"}}>
         <div className="navBarWrapper">
-            {/* <NavLink to="/" className="navBarCssButton">
+            <NavLink to="/" className="navBarCssButton">
               <Button
+              id="home-nav-button"
                 classes={{ root: classes.root }}
                 variant="contained"
                 color="primary"
               >
                 Home
               </Button>
-            </NavLink> */}
+            </NavLink>
             {user ? (
               ""
             ) : (
@@ -124,7 +126,7 @@ const Navbar = () => {
       </div>
     </div>
 
-    // </NavWrapper>
+    </AppBar>
   );
 };
 

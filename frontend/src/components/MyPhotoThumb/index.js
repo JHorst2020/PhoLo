@@ -22,11 +22,15 @@ const MyPhotoThumb = () => {
  
   return (
     <>
-      <div>
-        <div className="text-location-name">{searchLocationName}</div>
+      <div style={{marginLeft:"15px"}}>
+        {/* <div className="text-location-name">{searchLocationName}</div> */}
+        <div className="text-location-name">All of My Photos</div>
         <div className="text-location-dates">
-          Between {searchDateRange[0]} and {searchDateRange[1]}
+          No date range
         </div>
+        {/* <div className="text-location-dates">
+          Between {searchDateRange[0]} and {searchDateRange[1]}
+        </div> */}
       </div>
       <div className="ImageThumb__photo-container">
         {locations.map((location) => (

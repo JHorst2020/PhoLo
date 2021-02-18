@@ -13,7 +13,7 @@ const Home = () => {
           <GoogleMap />
         </div>
 
-        <div style={{ flex: "4", height: "100%", overflow: "scroll", width:"100%" }}>
+        <div style={{ flex: "3", height: "100%", overflow: "scroll", width:"100%" }}>
           <ImageThumb />
         </div>
       </div>

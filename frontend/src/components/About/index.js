@@ -51,7 +51,7 @@ return (
           }}
         >
           {" "}
-          What's in the sausage?{" "}
+          What's in the sauce?{" "}
         </div>
         <div
           style={{

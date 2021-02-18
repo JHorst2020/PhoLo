@@ -78,6 +78,7 @@ const AddPhotoModal = () => {
 
   return (
     <div>
+      
       <Button classes={{ root: classes.root }} color="primary" variant="contained" onClick={handleClickOpen}>
         Add Photo
       </Button>

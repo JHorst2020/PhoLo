@@ -26,7 +26,7 @@ const ImageThumb = () => {
     if(locations.length > 0){
       return (
         <>
-          <div>
+          <div style={{marginLeft:"15px"}}>
             <div className="text-location-name">{searchLocationName}</div>
             <div className="text-location-dates">
               Dates: {searchDateRange[0]} to {searchDateRange[1]}
@@ -42,9 +42,9 @@ const ImageThumb = () => {
       
     }
 return (
-  <div>
+  <div style={{marginLeft:"15px"}}>
     <div className="text-location-name">{searchLocationName}</div>
-    <div className="text-location-dates">
+    <div className="text-location-dates" style={{marginBottom:"15px"}}>
       Between {searchDateRange[0]} and {searchDateRange[1]}
     </div>
     {/* <div>Nothing cool I guess.... </div> */}

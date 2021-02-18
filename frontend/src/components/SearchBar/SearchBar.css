@@ -11,14 +11,14 @@
     color:white;
 }
 .search-bar-logo{
-    height:50px;
+    /* height:15px; */
 }
 
 .search-bar-text-field:focus, input:focus {
     outline:none;
 }
 
-.fa-search{
-    font-size: 24px;
-    padding:10px;
-}
+/* .fa-search{
+    font-size: 15px;
+    padding:5px;
+} */
