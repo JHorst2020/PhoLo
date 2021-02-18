@@ -218,4 +218,8 @@ margin:10px;
   .searchForm{
     flex-direction:column
   }
+  .ImageThumb__photo{
+    width:175px;
+    height:175px
+  }
 }
