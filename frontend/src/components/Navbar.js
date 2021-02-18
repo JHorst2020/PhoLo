@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/session";
 import SearchBar from "./SearchBar"
 import Login from "./Login";
+import LoginMobileModal from "./Login/loginMobile";
 import Button from "@material-ui/core/Button";
 import AddPhotoModal from "../components/AddPhotoModal";
 import AddPhotoMobileModal from "../components/AddPhotoModal/mobileVersion";
@@ -92,10 +93,11 @@ const Navbar = () => {
 
                 {user ? (
                   ""
-                ) : (
+                ) : (<>
                   <MenuItem>
                     <NavLink to="/signup"><Button>signup</Button></NavLink>
                   </MenuItem>
+                  </>
                 )}
                 {user ? (
                   <MenuItem>
@@ -121,7 +123,9 @@ const Navbar = () => {
                     </Button>
                   </MenuItem>
                 ) : (
-                  <Login />
+                  <MenuItem>
+                  <LoginMobileModal />
+                  </MenuItem>
                 )}
                 <MenuItem>
                   <About />

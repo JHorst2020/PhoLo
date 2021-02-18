@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#2e9cca",
     variant: "contained",
-    
+    // width:"15px",
+    height:"2em",
   },
 }));
 
@@ -47,21 +48,30 @@ const SearchBar = () => {
 
     return (
         <div className="search-bar" >
-            <form onSubmit={submitForm} style={{display:"flex", flexDirection:"row", justifyContent: "space-around"}}>
-                
-                
-                  <TextField boxShadow={0} margin="dense" variant="filled" label="Where?" className="search-bar-text-field" value={location} onChange={(e) => setLocation(e.target.value)}  required />
+            <form onSubmit={submitForm} className="searchForm" style={{display:"flex", justifyContent: "space-around"}}>
+                  
+                <div style={{display:"flex", flexDirection:"row", justifyContent: "space-around"}}>
+
             
               
-                  <TextField InputLabelProps={{ shrink: true }} margin="dense" variant="filled" type="date" className="search-bar-text-field" label="Start Date" value={dateRangeStart} onChange={(e)=> setDateRangeStart(e.target.value)} required/>
+                  <TextField id="searchDateStart" InputLabelProps={{ shrink: true }} margin="dense" variant="filled" type="date" className="search-bar-text-field" label="Start Date" value={dateRangeStart} onChange={(e)=> setDateRangeStart(e.target.value)} required/>
                 
              
-                  <TextField InputLabelProps={{ shrink: true }}margin="dense" variant="filled" type="date" className="search-bar-text-field" label="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} required/>
+                  <TextField id="searchDateEnd" InputLabelProps={{ shrink: true }}margin="dense" variant="filled" type="date" className="search-bar-text-field" label="End Date" value={dateRangeEnd} onChange={(e)=> setDateRangeEnd(e.target.value)} required/>         
+                </div>
                 
-               <div style={{alignSelf:"center", margin:"15px"}}>
 
+         
+
+                  <TextField id="searchLocationInput" boxShadow={0} margin="dense" variant="filled" label="Where?" className="search-bar-text-field" value={location} onChange={(e) => setLocation(e.target.value)}  required />
+                  
+
+                  
+               <div className="searchIcon" style={{alignSelf:"center", marginLeft:"15px", marginBottom:"5px"}}>
                   <Button variant="contained" color="primary" classes={{ root: classes.root }} type="submit" size="small"><i class="fas fa-search"></i></Button>
-               </div>
+                 
+                </div>
+                
                 
                 
             </form>

@@ -177,22 +177,22 @@ align-items:center;
   display:none
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1600px) {
   .Home__home-container{
     display: flex;
     flex-direction: column;
     /* flex-wrap: wrap; */
   }
-  .welcome-back-text{
-    display:none
-  }
+  /* .welcome-back-text{
+    font-size:small;
+  } */
   .logo-image{
     width:75px;
     height:75px;
 margin:10px;
   }
   .profileAvatar{
-    margin:10px;
+    margin-right:10px;
     height:75px;
     width:75px;
   }
@@ -210,5 +210,12 @@ margin:10px;
   }
   .logo-image{
     margin-bottom:0px
+  }
+  .searchIcon{
+    margin-left: 5px;
+    padding:0px;
+  }
+  .searchForm{
+    flex-direction:column
   }
 }
