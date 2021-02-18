@@ -208,7 +208,7 @@ const initialState = {
   locations: [],
   locationModal: [],
   searchLocationName: ["Nearby Photos"],
-  searchLocation: [36.1699, -115.1398, 3],
+  searchLocation: [36.1699, -115.1398, 6],
   searchDateRange: ["1950-01-01", "2021-02-01"],
   // uploadedPhotoExif: {latitude: "", longitude:"", photoDate: "", image:"", url:""},
   uploadedPhotoExif: {photoDate:"2016-01-20", latitude: 0, longitude:0},
