@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddPhotoModal = (button) => {
+const AddPhotoMobileModal = (button) => {
   console.log("this is button:     ", typeof button)
   const testselect = useSelector((state) => state.photo.testit)
   const user_id = useSelector((state) => state.session.user.id)
@@ -79,8 +79,7 @@ const AddPhotoModal = (button) => {
 
   return (
     <div>
-      <Button classes={{ root: classes.root }} color="primary" variant="contained" onClick={handleClickOpen}>
-        Add Photo
+      <Button onClick={handleClickOpen}>Add Photo
       </Button>
       <div >
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-text">
@@ -126,4 +125,4 @@ const AddPhotoModal = (button) => {
   );
 };
 
-export default AddPhotoModal;
+export default AddPhotoMobileModal;

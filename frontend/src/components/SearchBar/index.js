@@ -60,7 +60,7 @@ const SearchBar = () => {
                 
                <div style={{alignSelf:"center", margin:"15px"}}>
 
-                  <Button variant="contained" color="primary" classes={{ root: classes.root }} type="submit" size="small">SEARCH</Button>
+                  <Button variant="contained" color="primary" classes={{ root: classes.root }} type="submit" size="small"><i class="fas fa-search"></i></Button>
                </div>
                 
                 
