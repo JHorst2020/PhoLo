@@ -81,10 +81,11 @@ return (
             <div className="photo-date-text">{stringDate}</div>
             {/* <DialogContentText>
                 Date: 
-            </DialogContentText> */}
+              </DialogContentText> */}
                 {/* <DialogContentText > 
                     Location: {modalLocation.city}, {modalLocation.state}
-                    </DialogContentText> */}
+                  </DialogContentText> */}
+
                     <EditButton />
         </Dialog>
     {/* </div> */}

@@ -38,18 +38,20 @@
 .modal-photo-container{
     display:flex;
     justify-content:center;
+    min-width:100%
 }
-
+.MuiDialog-paperWidthSm{
+    min-width:80vw;
+}
 .modal-image {
-    max-height: 75vh;
+    /* max-height: 100%; */
     /* padding:10px; */
-    /* width: auto; */
-    /* object-fit:cover; */
+    min-width: 100%;
+    height:auto;
+    margin:15px;
+    object-fit:cover;
 }
 
-/* .Home__home-container{
-    located in src/index.css
-} */
 
 div[highlighted]{
     /* border: 5px solid red; */

@@ -44,7 +44,6 @@ export default function EditButton() {
   const dispatch = useDispatch();
 // console.log(updateLat, "       is update lat")
 // console.log("This is the location:     ", location)
-console.log("this is the open state:     ", open)
   if (currUser !== undefined && currUser!== null) {
     if (currUser.id && currUser.id === modalLocation.user_id) {
       const handleClickOpen = () => {
@@ -92,6 +91,7 @@ console.log("this is the open state:     ", open)
             Update{" "}
           </Button>
           <Dialog
+          className="helloworld"
             open={open}
             onClose={handleClose}
             aria-labelledby="form-dialog-text"
