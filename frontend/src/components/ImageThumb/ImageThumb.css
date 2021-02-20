@@ -46,10 +46,11 @@
 .modal-image {
     /* max-height: 100%; */
     /* padding:10px; */
-    min-width: 100%;
-    height:auto;
+    max-width: 75vw;
+    max-height:80vh;
+    /* height:auto; */
     margin:15px;
-    object-fit:cover;
+    /* object-fit:scale-down; */
 }
 
 
