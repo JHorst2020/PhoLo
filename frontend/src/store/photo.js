@@ -122,7 +122,6 @@ export const addNewPhoto = (photo) => async (dispatch) => {
       );
       const googleResults = await response.json();
       locationName = await googleResults.results[0].formatted_address;
-      console.log("this is the formatted address:     ", locationName)
 
   } else {
     locationName = "Add Address"

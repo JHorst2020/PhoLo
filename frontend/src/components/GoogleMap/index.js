@@ -58,8 +58,8 @@ const GoogleMap = () => {
         <Map>
           <GoogleMapReact 
             bootstrapURLKeys={{
-              key: `${process.env.REACT_APP_GOOGLE_API}`,
-              // key: `${process.env.REACT_APP_GOOGLE_API_DEVELOPMENT}`,
+              // key: `${process.env.REACT_APP_GOOGLE_API}`,
+              key: `${process.env.REACT_APP_GOOGLE_API_DEVELOPMENT}`,
               
             }}
             center={{

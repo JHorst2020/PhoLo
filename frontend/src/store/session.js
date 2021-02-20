@@ -25,9 +25,13 @@ export const loginPhone = ({phoneNumber}) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify({ phoneNumber }),
   });
-  dispatch(setUser(res.data.user));
   return res
 };
+
+export const updateLoggedInUser = (user) => async(dispatch) => {
+  console.log("this is the user     ",user)
+  dispatch(setUser(user));
+}
 
 export const restoreUser = () => async (dispatch) => {
   const res = await fetch("/api/session");
@@ -35,7 +39,8 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const createUser = (user) => async (dispatch) => {
-  const { images, image, username, email, password, firstName, lastName, phoneNumber} = user;
+  console.log("this is the created user:     ", user)
+  const {username, image, email, password, firstName, lastName, phoneNumber} = user;
   const formData = new FormData();
   formData.append("username", username);
   formData.append("email", email);
@@ -45,11 +50,11 @@ export const createUser = (user) => async (dispatch) => {
   formData.append("phoneNumber", phoneNumber);
 
   // for multiple files
-  if (images && images.length !== 0) {
-    for (var i = 0; i < images.length; i++) {
-      formData.append("images", images[i]);
-    }
-  }
+  // if (images && images.length !== 0) {
+  //   for (var i = 0; i < images.length; i++) {
+  //     formData.append("images", images[i]);
+  //   }
+  // }
 
   // for single file
   if (image) formData.append("image", image);
@@ -57,6 +62,7 @@ export const createUser = (user) => async (dispatch) => {
   const res = await fetch(`/api/users/`, {
     method: "POST",
     headers: {
+      // "Content-Type": "multipart/form-data",
       "Content-Type": "multipart/form-data",
     },
     body: formData,

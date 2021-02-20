@@ -31,7 +31,7 @@ const CreateUser = () => {
   const [lastName, setLastName] = useState("")
   const [phoneNumberString, setPhoneNumberString] = useState("")
   // for multuple file upload
-  //   const [images, setImages] = useState([]);
+    // const [images, setImages] = useState([]);
   const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const CreateUser = () => {
     // console.log(typeof phoneNumber)
     
     let newErrors = [];
-    dispatch(createUser({ username, email, password, image, firstName, lastName, phoneNumber}))
+    dispatch(createUser({ username, email, image, password, firstName, lastName, phoneNumber}))
       .then(() => {
         setUsername("");
         setEmail("");
@@ -99,7 +99,6 @@ const lazyphone = (e) => {
           <TextField
             label="First Name"
             type="text"
-            label="First Name"
             fullWidth
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -153,14 +152,14 @@ const lazyphone = (e) => {
             onChange={(e) => lazyphone(e.target.value)}
             />
         </span>
-        <label>
+        {/* <label>
           <span style={{ display: "flex", flexFlow: "row", margin: "5px" }}>
             <div style={{ marginRight: "20px", color: "gray" }}>
               Profile Photo:
             </div>
             <input type="file" onChange={updateFile} required/>
           </span>
-        </label>
+        </label> */}
         {/* <label>
             Multiple Upload
             <input 
@@ -179,18 +178,18 @@ const lazyphone = (e) => {
           </Button>
         </div>
       </form>
-      <div>
+      {/* <div>
         {user && (
           <div>
             <h1>{user.username}</h1>
             <img
-              style={{ width: "150px" }}
+              style={{ width: "1500px" }}
               src={user.profileImageUrl}
               alt="profile"
             />
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
