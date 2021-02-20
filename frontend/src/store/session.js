@@ -17,7 +17,7 @@ export const login = ({ credential, password }) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify({ credential, password }),
   });
-  dispatch(setUser(res.data.user));
+  // dispatch(setUser(res.data.user));
   return res
 };
 export const loginPhone = ({phoneNumber}) => async (dispatch) => {
@@ -67,8 +67,8 @@ export const createUser = (user) => async (dispatch) => {
     },
     body: formData,
   });
-
-  dispatch(setUser(res.data.user));
+return res
+  // dispatch(setUser(res.data.user));
 };
 
 export const logout = () => async (dispatch) => {

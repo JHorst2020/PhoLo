@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createUser } from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
+import {useHistory} from "react-router-dom"
 import NumberFormat from "react-number-format";
 import ImagePreview from "../components/AddPhotoModal/ImagePreview"
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,6 +12,8 @@ import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
 // import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogContent from "@material-ui/core/DialogContent";
+import SuccessModal from "../components/Success"
+import * as sessionActions from "../store/session"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CreateUser = () => {
   const classes = useStyles();
-
+const history = useHistory()
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +36,7 @@ const CreateUser = () => {
   // for multuple file upload
     // const [images, setImages] = useState([]);
   const [errors, setErrors] = useState([]);
+  const [boolean, setBoolean] = useState(false);
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -41,12 +45,11 @@ const CreateUser = () => {
     e.preventDefault();
 
     let phoneNumber = parseInt(phoneNumberString)
-    // console.log(phoneNumber)
-    // console.log(typeof phoneNumber)
+
     
     let newErrors = [];
     dispatch(createUser({ username, email, image, password, firstName, lastName, phoneNumber}))
-      .then(() => {
+      .then((res) => {
         setUsername("");
         setEmail("");
         setPassword("");
@@ -54,6 +57,12 @@ const CreateUser = () => {
         setFirstName("");
         setLastName("");
         setPhoneNumberString("");
+        if (res.data) setBoolean(true);
+        let user = res.data.user;
+        setTimeout(()=>{
+          dispatch(sessionActions.updateLoggedInUser(user))
+          history.push("/")
+        }, 500)
       })
       .catch((res) => {
         if (res.data && res.data.errors) {
@@ -178,18 +187,19 @@ const lazyphone = (e) => {
           </Button>
         </div>
       </form>
-      {/* <div>
+      <div>
         {user && (
           <div>
-            <h1>{user.username}</h1>
+            <SuccessModal boolean={boolean} />
+            {/* <h1>{user.username}</h1>
             <img
               style={{ width: "1500px" }}
               src={user.profileImageUrl}
               alt="profile"
-            />
+            /> */}
           </div>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };
