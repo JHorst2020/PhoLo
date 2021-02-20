@@ -30,7 +30,7 @@ const validateSignup = [
             }
           })
           .catch((err) => {
-            rej("Database error: ", err.message);
+            reject("Database error: ", err.message);
           });
       });
     }),
@@ -48,7 +48,7 @@ const validateSignup = [
             }
           })
           .catch((err) => {
-            rej("Database error: ", err.message);
+            reject("Database error: ", err.message);
           });
       });
     }),
@@ -82,15 +82,17 @@ router.post(
   validateSignup,
   asyncHandler(async (req, res) => {
     const { email, password, username, firstName, lastName, phoneNumber } = req.body;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
+    // const profileImageUrl = await singlePublicFileUpload(req.file);
+    const profileImageUrl = "https://pholo.s3.amazonaws.com/1613784815140.jpg"
+    console.log(profileImageUrl)
     const user = await User.signup({
       username,
       email,
       password,
-      profileImageUrl,
       firstName,
       lastName,
       phoneNumber,
+      profileImageUrl
     });
 
     setTokenCookie(res, user);
