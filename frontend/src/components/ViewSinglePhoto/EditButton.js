@@ -8,6 +8,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogContent from "@material-ui/core/DialogContent";
 import TextField from "@material-ui/core/TextField";
 import { updatePhoto, deletePhoto} from "../../store/photo";
+import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
+import UpdateIcon from '@material-ui/icons/Update';
 
 export default function EditButton() {
   // let stringDate = location.dateTime.toString()
@@ -78,7 +80,7 @@ export default function EditButton() {
         
     };
     const handleDelete = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         
         const payload = {id, searchLocation: [updateLat, updateLng, 3]}
         
@@ -86,9 +88,9 @@ export default function EditButton() {
       }
 
       return (
-        <>
-          <Button onClick={handleClickOpen} variant="contained" color="primary">
-            Update{" "}
+        <div>
+          <Button onClick={handleClickOpen} variant="contained" color="primary" startIcon={<UpdateIcon />} style={{ "margin": "10px" }}>
+            Update
           </Button>
           <Dialog
           className="helloworld"
@@ -153,12 +155,14 @@ export default function EditButton() {
             variant="contained"
             color="secondary"
             onClick={handleDelete}
-            style={{ "margin-bottom": "10px" }}
+            style={{ "margin": "10px" }}
             type="submit"
+            startIcon={<DeleteSharpIcon />}
             >
-            <i class="fas fa-trash-alt"></i>
+              Delete
+            {/* <i class="fas fa-trash-alt"></i> */}
           </Button>
-        </>
+        </div>
       );
     }
   }

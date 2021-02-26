@@ -37,22 +37,27 @@
 
 .modal-photo-container{
     display:flex;
-    justify-content:center;
-    min-width:100%
+    flex-direction: column;
+    /* justify-content:center; */
+    /* align-items:center; */
+    /* background:red; */
+    /* max-width:100%; */
 }
-.MuiDialog-paperWidthSm{
-    min-width:80vw;
-}
+/* .MuiDialog-paperWidthSm{
+    width:80vw;
+} */
 .modal-image {
-    /* max-height: 100%; */
-    /* padding:10px; */
-    max-width: 75vw;
+    /* max-width: 75vw;
     max-height:80vh;
-    /* height:auto; */
-    margin:15px;
-    /* object-fit:scale-down; */
+    margin:15px; */
+    /* max-width:10vw;
+    max-height:50vh; */
+    object-fit:scale-down
 }
 
+.dialog-modal{
+    min-width:80vw;
+}
 
 div[highlighted]{
     /* border: 5px solid red; */

@@ -2,17 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import EXIF from "exif-js";
-import Button from "@material-ui/core/Button";
+import Modal from "@material-ui/core/Modal";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContentText from "@material-ui/core/DialogContentText";
+import IconButton from "@material-ui/core/IconButton";
+import Box from '@material-ui/core/Box'
 import EditButton from "./EditButton.js"
 import { updateLocationModal, updateSearchCoord } from "../../store/photo";
+import CloseIcon from "@material-ui/icons/Close";
+import CancelSharpIcon from '@material-ui/icons/CancelSharp';
 
 
 const photoStyle = {
-    maxWidth: "1200px"
+    maxWidth: "50vw",
+    maxHeight: "60vh",
+    objectFit:"scale-down"
+    
 }
 
 const ViewSinglePhoto = ({location, isOpen=false}) => {
@@ -66,29 +72,77 @@ const mouseOut = () => {
 return (
   <>
     {/* <div key={location.id} className="ImageThumb__photo" onMouseOver={mouseOver} onMouseOut={mouseOut}> */}
-    <div id={`photothumb-${location.id}`} key={location.id} className="ImageThumb__photo pointer" onMouseOver={mouseOver} onMouseOut={mouseOut} >
-    <div className="ImageContainer">
-        {location.photoThumbUrl !== null ? <img src={location.photoThumbUrl} alt="Thumbnail1" onClick={handleClickOpen} id={`photothumb-${location.id}`} className="thumb-image"/> : <img src={location.photoUrl} alt="Thumbnail 2" onClick={handleClickOpen} id={`photothumb-${modalLocation.id}`}className="thumb-image"/>}
+    <div
+      id={`photothumb-${location.id}`}
+      key={location.id}
+      className="ImageThumb__photo pointer"
+      onMouseOver={mouseOver}
+      onMouseOut={mouseOut}
+    >
+      <div className="ImageContainer">
+        {location.photoThumbUrl !== null ? (
+          <img
+            src={location.photoThumbUrl}
+            alt="Thumbnail1"
+            onClick={handleClickOpen}
+            id={`photothumb-${location.id}`}
+            className="thumb-image"
+          />
+        ) : (
+          <img
+            src={location.photoUrl}
+            alt="Thumbnail 2"
+            onClick={handleClickOpen}
+            id={`photothumb-${modalLocation.id}`}
+            className="thumb-image"
+          />
+        )}
+      </div>
     </div>
-    </div>
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-text">
-            {/* <Button onClick={handleClose}>Modal: {modalLocation.id}</Button> */}
-            <div className="modal-photo-container">
-            <img src={modalLocation.photoUrl} style={photoStyle} className="modal-image" />
-            </div>
-            <div className="photo-title-text">{modalLocation.photoTitle}</div>
-            <div className="photo-description-text">{modalLocation.description}</div>
-            <div className="photo-date-text">{stringDate}</div>
-            {/* <DialogContentText>
+    <div style={{display:"flex", backgroundColor:"red", justifyContent:"center"}}>
+      <Dialog
+        // fullWidth={true}
+        maxWidth={'lg'}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-text"
+        >
+        <>
+<div style={{display:"flex", flexDirection:"column", justifyContent:"flex-start", alignItems: "flex-start"}}>
+        <div style={{position:"absolute", top:"0%", right:"0%"}}>
+        <IconButton onClick={handleClose} color="secondary">
+          {/* <CloseIcon /> */}
+          <CancelSharpIcon />
+        </IconButton>
+        </div>
+      
+       <img src={modalLocation.photoUrl} style={photoStyle} className="modal-image" />
+        {/* <Box width={10} height="5%" style={{ backgroundSize: "contain" }}>
+          <img src={modalLocation.photoUrl} className="modal-image" />
+        </Box> */}
+        <div className="photo-title-text">{modalLocation.photoTitle}</div>
+        <div className="photo-description-text">
+          {modalLocation.description}
+        </div>
+        <div className="photo-date-text">{stringDate}</div>
+        {/* <DialogContentText>
                 Date: 
               </DialogContentText> */}
-                {/* <DialogContentText > 
+        {/* <DialogContentText > 
                     Location: {modalLocation.city}, {modalLocation.state}
                   </DialogContentText> */}
 
-                    <EditButton />
-        </Dialog>
-    {/* </div> */}
+           <div>
+        <EditButton />
+             </div>       
+                  
+                  
+                  </div>
+                  {/* <span>Hello</span> */}
+                  </>
+      </Dialog>
+    
+                  </div>
   </>
 );
 
