@@ -22,7 +22,7 @@ const ImageThumb = () => {
         // let payload = {searchLat: 87, searchLng: -84, radius: 3}
         // console.log(payload)
         dispatch(getNearbyPhotos(payload))
-    }, [mapBounds])
+    }, [mapBounds,searchDateRange])
     if(locations.length > 0){
       return (
         <>
@@ -47,7 +47,7 @@ return (
     <div className="text-location-dates" style={{marginBottom:"15px"}}>
       Between {searchDateRange[0]} and {searchDateRange[1]}
     </div>
-    {/* <div>Nothing cool I guess.... </div> */}
+    <div style={{marginBottom:"10px"}}>Try a different date range, or enter a different location.</div>
     <div>
       <img className="noPicZone" src={noPics} alt="no pics" />
     </div>
