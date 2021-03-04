@@ -94,23 +94,23 @@ Most social media sites make it easy to find photos of a person, but not of a pa
 Most newer cameras include EXIF data which contain the date and location that a photo was taken. When a user uploads a photo, this information is collected automatically and stored with the photo. In the event that no such EXIF data exists, a user can provide the missing details. Other users can then search for these images by simply entering a date range, and the name of a location. 
 
 
+#
+### Notable Technologies Used
 
-### Notable Technologies
-A. Backend
+<img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB'>
+<img src='https://camo.githubusercontent.com/80b98387e22ad1a5200ea1e772cb912521dc89c4c0478c3ba6f347af66ff3d2e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656475782532302d2532333230323332612e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d7265647578266c6f676f436f6c6f723d253233363144414642'>
+<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
+<img src='https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white'>
+<img src='https://img.shields.io/badge/Google_Maps_API-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white'>
+<img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
+<img src='https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white'>
+<img src='https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white'>
+<img src='https://img.shields.io/badge/Express.js-404D59?style=for-the-badge'>
+<img src='https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white'>
+<img src='https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white'>
+<img src='https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white'>
 
-* [Node.js](https://nodejs.org/en/)
-* [Express](https://expressjs.com/)
-* [PostgreSQL](https://www.postgresql.org/)
-* [Sequelize](https://sequelize.org/)
-* [Amazon AWS S3 Bucket Hosting SDK](https://aws.amazon.com/s3/)
-* [GoogleMap API](https://developers.google.com/maps/documentation)
-* [JSON](https://www.json.org/json-en.html)
-<!--ReactSkipperEnd -->
-  
-B. Frontend
-
-* [React](http://reactjs.org/)
-* [Redux](https://redux.js.org/)
+#  
 
 
 <!--ReactSkipperEnd -->
