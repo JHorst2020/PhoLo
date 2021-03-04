@@ -192,7 +192,7 @@ Project Link: [https://github.com/JHorst2020/PhoLo](https://github.com/JHorst202
 
 * [App Academy](https://www.appacademy.io/)
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* []()
+
 
 
 
