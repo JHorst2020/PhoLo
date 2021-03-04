@@ -187,15 +187,15 @@ Project Link: [https://github.com/JHorst2020/PhoLo](https://github.com/JHorst202
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/JHorst2020/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/JHorst2020/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/JHorst2020/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/JHorst2020/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/JHorst2020/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/JHorst2020/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/JHorst2020/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/JHorst2020/repo/issues
-[license-shield]: https://img.shields.io/github/license/JHorst2020/repo.svg?style=for-the-badge
-[license-url]: https://github.com/JHorst2020/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/JHorst2020/PhoLo.svg?style=for-the-badge
+[contributors-url]: https://github.com/JHorst2020/PhoLo/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/JHorst2020/PhoLo.svg?style=for-the-badge
+[forks-url]: https://github.com/JHorst2020/PhoLo/network/members
+[stars-shield]: https://img.shields.io/github/stars/JHorst2020/PhoLo.svg?style=for-the-badge
+[stars-url]: https://github.com/JHorst2020/PhoLo/stargazers
+[issues-shield]: https://img.shields.io/github/issues/JHorst2020/PhoLo.svg?style=for-the-badge
+[issues-url]: https://github.com/JHorst2020/PhoLo/issues
+[license-shield]: https://img.shields.io/github/license/JHorst2020/PhoLo.svg?style=for-the-badge
+[license-url]: https://github.com/JHorst2020/PhoLo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/jerzy-horst-027396181/
