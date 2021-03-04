@@ -1,4 +1,4 @@
-import { fetch as fetchy } from "../util/csrf.js"; //Aliased otherwise it screws up the fetch for google
+import { fetch as fetchy } from "../util/csrf.js"; //Aliased otherwise it screws up the fetch to google api
 export const LOAD_NEARBY_PHOTOS = "./photo/LOAD_NEARBY_PHOTOS";
 export const LOAD_SEARCH_INFO = "./photo/LOAD_SEARCH_INFO";
 export const EXTRACT_EXIF_DATA = "./photo/EXTRACT_EXIF_DATA";
@@ -75,7 +75,6 @@ export const getNearbyPhotos = (payload) => async (dispatch) => {
 
   if (response.ok) {
     const locations = await response.json();
-    // const locations = await response;
     dispatch(loadNearbyPhotos(locations));
   }
 };
@@ -109,9 +108,6 @@ export const searchByLocation = (payload) => async (dispatch) => {
   }
 };
 
-// export const mapStatusChange = (payload) => async (dispatch) => {
-//   const {}
-// }
 
 export const addNewPhoto = (photo) => async (dispatch) => {
   const { latitude, longitude, dateTime, image, user_id, photoTitle, description } = photo;
@@ -145,7 +141,6 @@ export const addNewPhoto = (photo) => async (dispatch) => {
   });
 };
 export const updatePhoto = (payload) => async(dispatch) => {
-  // const{id, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = payload
   const {id, updateLoc, user_id, locationName, streetNumber, streetName, city, state, zipcode, updateDate, updateLat, updateLng, updateTitle, updateDescription, photoUrl, photoThumbUrl} = payload;
   console.log("this is the payload incoming:       ", payload)
   let newAddressName = locationName
@@ -157,12 +152,10 @@ export const updatePhoto = (payload) => async(dispatch) => {
       `https://maps.googleapis.com/maps/api/geocode/json?address=${spaceRemover}&key=${process.env.REACT_APP_GOOGLE_API}`
     );
       const googleResults = await response.json();
-      // newAddressName = await googleResults.results[0];
       newAddressName = await googleResults.results[0].formatted_address;
       newLat = await googleResults.results[0].geometry.location.lat;
       newLng = await googleResults.results[0].geometry.location.lng;
     }
-    // console.log("this is the photoTitle:      ", updateTitle)
   const dBpayload = {
     city: city,
     locationName: newAddressName,
@@ -180,7 +173,6 @@ export const updatePhoto = (payload) => async(dispatch) => {
     user_id: user_id,
     id: id
   };
-  // console.log("this is th dBpayload:       ",dBpayload)
   const res = await fetchy ("/api/photo/update", {
     method: "PUT",
     headers: {
@@ -209,13 +201,11 @@ const initialState = {
   searchLocationName: ["Nearby Photos"],
   searchLocation: [36.1699, -115.1398, 6],
   searchDateRange: ["1950-01-01", "2021-02-01"],
-  // uploadedPhotoExif: {latitude: "", longitude:"", photoDate: "", image:"", url:""},
   uploadedPhotoExif: {photoDate:"2016-01-20", latitude: 0, longitude:0},
   photoLocationName: "",
 };
 
 const photoReducer = (state = initialState, action) => {
-  // console.log(action);
   switch (action.type) {
     case EXTRACT_EXIF_DATA: {
       return {

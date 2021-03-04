@@ -17,7 +17,6 @@ export const login = ({ credential, password }) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify({ credential, password }),
   });
-  // dispatch(setUser(res.data.user));
   return res
 };
 export const loginPhone = ({phoneNumber}) => async (dispatch) => {
@@ -62,13 +61,11 @@ export const createUser = (user) => async (dispatch) => {
   const res = await fetch(`/api/users/`, {
     method: "POST",
     headers: {
-      // "Content-Type": "multipart/form-data",
       "Content-Type": "multipart/form-data",
     },
     body: formData,
   });
 return res
-  // dispatch(setUser(res.data.user));
 };
 
 export const logout = () => async (dispatch) => {
@@ -87,7 +84,6 @@ function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case SET_USER:
-      // I prefer this syntax rather than the Object.assign(...)
       return { ...state, user: action.payload };
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null });

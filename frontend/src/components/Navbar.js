@@ -1,5 +1,4 @@
 import React, {useState} from "react"
-import styled from "styled-components";
 import {makeStyles} from "@material-ui/core/styles"
 import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,13 +16,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-
-// styled components are great. I recommend you looking into them!
-// const NavWrapper = styled.div`
- 
-  
-//   background-color: red;
-// `;
 const useStyles = makeStyles(theme => ({
   root: {
     size: "small",
@@ -55,7 +47,6 @@ const Navbar = () => {
       history.push("/signup");
     }
   };
-  
 
   return (
     <div>
@@ -64,7 +55,7 @@ const Navbar = () => {
           <div style={{display:"flex", alignItems:"center"}}>
             <div style={{ display: "flex", flexDirection:"column", alignItems: "center" }}>
               <NavLink to="/">
-                <img src={logo} className="logo-image" />
+                <img src={logo} className="logo-image" alt="logo"/>
               </NavLink>
               <div className="mobile-nav-bar" style={{ marginLeft: "5px", marginBottom:"5px" }}>
                 <Button

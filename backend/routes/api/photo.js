@@ -22,14 +22,11 @@ router.get(
     
     let searchLat = parseFloat(req.params.searchLat)
     let searchLng = parseFloat(req.params.searchLng)
-    // let radius = parseInt(req.params.radius)
     let latBounds = parseFloat(req.params.latBounds)
     let lngBounds = parseFloat(req.params.lngBounds)
     let dateRangeStart = req.params.dateRangeStart
     let dateRangeEnd = req.params.dateRangeEnd
 
-    // if (searchLat < 0) parseFloat(latBounds*=(-1))
-    // if (searchLng < 0) parseFloat(lngBounds*=(-1))
     console.log("This is the search coordinates",   searchLat, searchLng, dateRangeStart, dateRangeEnd, latBounds, lngBounds)
     const nearbyPhotos = await Photo.findAll({
       where: {
@@ -43,7 +40,6 @@ router.get(
           [Op.between]: [dateRangeStart, dateRangeEnd],
         },
       },
-      // attributes: ["photoThumbUrl"],
       order: [["dateTime", "DESC"]],
     });
     res.json(nearbyPhotos)
@@ -65,9 +61,6 @@ router.get("/myPhoto/:userId",
 
 router.put("/update", asyncHandler (async (req, res) => {
   const {id, user_id, locationName, streetNumber, streetName, city, state, zipcode, dateTime, latitude, longitude, photoTitle, description, photoUrl, photoThumbUrl} = req.body
-  // console.log("this is req.body:     ",city)
-  
-
     const updatedPhoto = await Photo.update({
       city: city,
       locationName: locationName,
@@ -88,9 +81,7 @@ router.put("/update", asyncHandler (async (req, res) => {
     returning: true,
     plain: true
   })
-  
   return res.json(updatedPhoto);
-
 }
 ))
 
@@ -98,8 +89,6 @@ router.post('/add',
 singleMulterUpload("image"),
 asyncHandler( async (req, res) => {
     const { latitude, longitude, dateTime, user_id, locationName, photoTitle, description } = req.body;
-   
-
     const photoUrl = await singlePublicFileUpload(req.file)
     const newPhoto = await Photo.create({ 
         latitude,

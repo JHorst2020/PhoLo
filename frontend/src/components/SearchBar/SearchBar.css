@@ -1,26 +1,14 @@
 .search-bar{
-    /* background-color:#464866; */
     display:flex;
     align-items:center;
-    /* justify-content:space-around; */
     margin-left:25px;
-    
 }
+
 .search-bar-text-field{
-    /* flex-shrink: 1; */
     background-color:white;
     border-radius:20px;
-    /* color:white; */
-}
-.search-bar-logo{
-    /* height:15px; */
 }
 
 .search-bar-text-field:focus, input:focus {
     outline:none;
 }
-
-/* .fa-search{
-    font-size: 15px;
-    padding:5px;
-} */

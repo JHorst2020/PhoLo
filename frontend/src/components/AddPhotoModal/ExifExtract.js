@@ -5,7 +5,6 @@ import { photoExifData, updateImagePreview } from "../../store/photo";
 
 function ImageMeta() {
     const dispatch = useDispatch();
-    const [url, setUrl] = useState("")
   const handleChange = ({
     target: {
       files: [file],
@@ -16,7 +15,6 @@ function ImageMeta() {
       EXIF.getData(file, function () {
 
         var exifData = EXIF.pretty(this);
-        // console.log("This is exifData:     ",exifData)
         if (exifData) {
           let spaceIndex = EXIF.getTag(this, "DateTimeOriginal").indexOf(" ")
           let photoDate = EXIF.getTag(this, "DateTimeOriginal").slice(0, spaceIndex).split(":").join("-")
@@ -46,10 +44,6 @@ function ImageMeta() {
           let image = file
           const payload = {latitude, longitude, photoDate, image}
           dispatch(photoExifData(payload))
-          // console.log(url)
-          
-            // dispatch(photoExifData({latitude: 39, longitude: -119, photoDate:"2021-01-01"}))
-          
         } else {
             console.log("No EXIF data found in image '" + file.name + "'.");
         }

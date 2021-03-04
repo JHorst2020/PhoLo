@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContentText from "@material-ui/core/DialogContentText";
+// import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogContent from "@material-ui/core/DialogContent";
 import TextField from "@material-ui/core/TextField";
 import { updatePhoto, deletePhoto} from "../../store/photo";
@@ -160,7 +160,6 @@ export default function EditButton() {
             startIcon={<DeleteSharpIcon />}
             >
               Delete
-            {/* <i class="fas fa-trash-alt"></i> */}
           </Button>
         </div>
       );

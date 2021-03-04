@@ -3,15 +3,9 @@ import { createUser } from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import {useHistory} from "react-router-dom"
 import NumberFormat from "react-number-format";
-import ImagePreview from "../components/AddPhotoModal/ImagePreview"
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
-import DialogActions from "@material-ui/core/DialogActions";
-// import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogContent from "@material-ui/core/DialogContent";
 import SuccessModal from "../components/Success"
 import * as sessionActions from "../store/session"
 
@@ -33,20 +27,14 @@ const history = useHistory()
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [phoneNumberString, setPhoneNumberString] = useState("")
-  // for multuple file upload
-    // const [images, setImages] = useState([]);
   const [errors, setErrors] = useState([]);
   const [boolean, setBoolean] = useState(false);
-
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     let phoneNumber = parseInt(phoneNumberString)
-
-    
     let newErrors = [];
     dispatch(createUser({ username, email, image, password, firstName, lastName, phoneNumber}))
       .then((res) => {
@@ -78,11 +66,10 @@ const lazyphone = (e) => {
   setPhoneNumberString(e[1].concat(e[4],e[5],e[6],e[9],e[10],e[11],e[13],e[14],e[15],e[16]))
 }
 
-
-  const updateFile = (e) => {
-    const file = e.target.files[0];
-    if (file) setImage(file);
-  };
+  // const updateFile = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) setImage(file);
+  // };
 
   // for multiple file upload
   //   const updateFiles = (e) => {
@@ -161,21 +148,6 @@ const lazyphone = (e) => {
             onChange={(e) => lazyphone(e.target.value)}
             />
         </span>
-        {/* <label>
-          <span style={{ display: "flex", flexFlow: "row", margin: "5px" }}>
-            <div style={{ marginRight: "20px", color: "gray" }}>
-              Profile Photo:
-            </div>
-            <input type="file" onChange={updateFile} required/>
-          </span>
-        </label> */}
-        {/* <label>
-            Multiple Upload
-            <input 
-              type="file"
-              multiple
-              onChange={updateFiles} />
-          </label> */}
         <div style={{ width: "200px" , margin:"5px"}}>
           <Button
             classes={{ root: classes.root }}
@@ -191,12 +163,6 @@ const lazyphone = (e) => {
         {user && (
           <div>
             <SuccessModal boolean={boolean} />
-            {/* <h1>{user.username}</h1>
-            <img
-              style={{ width: "1500px" }}
-              src={user.profileImageUrl}
-              alt="profile"
-            /> */}
           </div>
         )}
       </div>

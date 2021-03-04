@@ -14,16 +14,9 @@ import { getRandomDigits } from "../../store/verification";
 import { FormControl } from "@material-ui/core";
 import SuccessModal from "../Success";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    size: "large",
-    backgroundColor: "#2e9cca",
-    variant: "contained",
-  },
-}));
+
 
 const LoginModal = () => {
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [openUserName, setOpenUserName] = useState(false);
   const [openPhoneNumber, setOpenPhoneNumber] = useState(false);
@@ -110,18 +103,11 @@ const LoginModal = () => {
   };
   const handlePhoneSubmit = (e) => {
     e.preventDefault();
-    // console.log(
-    //   randomDigits.digits,
-    //   enterDigits,
-    //   typeof randomDigits.digits,
-    //   typeof enterDigits
-    // );
     setErrors([]);
     if (
       randomDigits.digits === parseInt(enterDigits) ||
       phoneNumber === "0008675309"
     ) {
-      // setBoolean(true);
       return dispatch(sessionActions.loginPhone({ phoneNumber }))
         .then((res) => {
           if (res.data && !res.data.errors) setBoolean(true);
@@ -142,7 +128,6 @@ const LoginModal = () => {
     return (
       <div>
         <Button
-          
           onClick={handleClickOpen}
         >
           Login

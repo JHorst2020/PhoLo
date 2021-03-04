@@ -7,13 +7,11 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
-// import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogContent from "@material-ui/core/DialogContent";
 import NumberFormat from "react-number-format";
 import { getRandomDigits } from "../../store/verification";
 import { FormControl } from "@material-ui/core";
 import SuccessModal from "../Success"
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +36,6 @@ const LoginModal = () => {
   const [boolean, setBoolean] = useState(false)
 
   useEffect(()=> {
-
   }, [boolean])
   const lazyphone = (e) => {
     setPhoneNumberString(
@@ -113,18 +110,11 @@ const LoginModal = () => {
   };
   const handlePhoneSubmit = (e) => {
     e.preventDefault();
-    // console.log(
-    //   randomDigits.digits,
-    //   enterDigits,
-    //   typeof randomDigits.digits,
-    //   typeof enterDigits
-    // );
     setErrors([]);
     if (
       randomDigits.digits === parseInt(enterDigits) ||
       phoneNumber === "0008675309"
     ) {
-    // setBoolean(true);
       return dispatch(sessionActions.loginPhone({ phoneNumber })).then(
         (res) => {
           if (res.data && !res.data.errors) setBoolean(true)

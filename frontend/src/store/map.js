@@ -20,7 +20,6 @@ export const clickPinId = (id) =>async(dispatch) => {
     dispatch(pinId(id))
 }
 
-
 const initialState = {
     mapBounds: [],
     mapFocus: {},
@@ -28,7 +27,6 @@ const initialState = {
 }
 
 const mapReducer = (state = initialState, action) => {
-    // console.log(action)
     switch (action.type) {
         case MAP_BOUNDS: {
             return {
@@ -40,8 +38,6 @@ const mapReducer = (state = initialState, action) => {
         default: 
             return state;
     }
-
-
 }
 
 export default mapReducer

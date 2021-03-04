@@ -52,22 +52,6 @@ const validateSignup = [
           });
       });
     }),
-  // check("phoneNumber")
-  //   .custom((value, {req}) => {
-  //     return new Promise((resolve, reject) => {
-  //       User.findOne({where: { phoneNumber: req.body.phoneNumber}})
-  //         .then((res) => {
-  //           if(res) {
-  //             reject("Phone number already used")
-  //           } else {
-  //             resolve()
-  //           }
-  //         })
-  //         .catch((err) => {
-  //           rej("Database error: ", err.message);
-  //         });
-  //     })
-  //   }),
   check("username").not().isEmail().withMessage("Username cannot be an email."),
   check("password")
     .isLength({ min: 6 })
@@ -109,8 +93,6 @@ router.post(
 //   multipleMulterUpload("images"),
 //   asyncHandler(async (req, res) => {
 //     const images = await multiplePublicFileUpload(req.files);
-//     // Do something with the images
-//     // images is an array where each element is the url to your bucket.
 //   })
 // );
 
@@ -121,7 +103,6 @@ router.put(
     const id = req.params.id;
     const profileImageUrl = await singlePublicFileUpload(req.file);
     await User.update({ profileImageUrl }, { where: { id } });
-
     res.json({ profileImageUrl });
   })
 );

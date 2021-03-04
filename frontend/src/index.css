@@ -142,8 +142,6 @@ align-items:center;
   width:100vw;
   justify-content:flex-start;
   background-color:#29648a;
-  /* background-color: pink; */
-
 }
 
 .welcome-back-text{
@@ -159,7 +157,6 @@ align-items:center;
   font-weight:bolder;
   padding:10px;
   text-transform: uppercase;
-  /* width:300px; */
 }
 
 .photo-description-text{
@@ -181,11 +178,8 @@ align-items:center;
   .Home__home-container{
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
   }
-  /* .welcome-back-text{
-    font-size:small;
-  } */
+  
   .logo-image{
     width:75px;
     height:75px;

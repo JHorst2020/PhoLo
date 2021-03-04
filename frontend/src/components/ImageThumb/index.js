@@ -2,10 +2,8 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {getNearbyPhotos} from "../../store/photo"
 import "./ImageThumb.css"
-import LazyLoad from "react-lazyload"
 import ViewSinglePhoto from "../ViewSinglePhoto"
 import noPics from "../../assets/noPic.gif"
-import noPics2 from "../../assets/noPic2.gif"
 
 const ImageThumb = () => {
     const dispatch = useDispatch()
@@ -19,8 +17,6 @@ const ImageThumb = () => {
   
     useEffect(() => {
         let payload = {searchLat: mapCenter.lat, searchLng: mapCenter.lng, radius: searchLocation[2], dateRangeStart: searchDateRange[0], dateRangeEnd: searchDateRange[1], latBounds: mapBounds[0], lngBounds: mapBounds[1]}
-        // let payload = {searchLat: 87, searchLng: -84, radius: 3}
-        // console.log(payload)
         dispatch(getNearbyPhotos(payload))
     }, [mapBounds,searchDateRange])
     if(locations.length > 0){

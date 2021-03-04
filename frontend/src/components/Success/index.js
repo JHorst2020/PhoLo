@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,12 +30,10 @@ const handleClose = () => {
     setTimeout(()=>{
         setOpen(false)
     },500)
-    // setOpen(false)
   },[boolean])
 
   return (
     <div >
-      
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -44,7 +41,6 @@ const handleClose = () => {
         open={open}
         onClose={handleClose}
         closeAfterTransition
-        // BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
