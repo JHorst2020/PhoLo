@@ -97,6 +97,7 @@ Most newer cameras include EXIF data which contain the date and location that a 
 
 ### Notable Technologies
 A. Backend
+
 * [Node.js](https://nodejs.org/en/)
 * [Express](https://expressjs.com/)
 * [PostgreSQL](https://www.postgresql.org/)
@@ -104,7 +105,10 @@ A. Backend
 * [Amazon AWS S3 Bucket Hosting SDK](https://aws.amazon.com/s3/)
 * [GoogleMap API](https://developers.google.com/maps/documentation)
 * [JSON](https://www.json.org/json-en.html)
+<!--ReactSkipperEnd -->
+  
 B. Frontend
+
 * [React](http://reactjs.org/)
 * [Redux](https://redux.js.org/)
 
@@ -177,7 +181,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - jerzyhorst@gmail.com
+Jerzy Horst - Portfolio Website: https://jerzy.tech
 
 Project Link: [https://github.com/JHorst2020/PhoLo](https://github.com/JHorst2020/PhoLo)
 
@@ -186,8 +190,8 @@ Project Link: [https://github.com/JHorst2020/PhoLo](https://github.com/JHorst202
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
+* [App Academy](https://www.appacademy.io/)
+* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 * []()
 
 
