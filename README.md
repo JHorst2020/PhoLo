@@ -33,7 +33,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/JHorst2020/PhoLo">
-    <img src="./myLogo.png" alt="Logo" width="80" height="80">
+    <img src="./myLogo.png" alt="Logo" >
   </a>
 
   <h3 align="center">PhoLo</h3>
