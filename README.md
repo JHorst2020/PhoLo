@@ -89,17 +89,27 @@
 ![product-screenshot](./pholoMockup2.png)
 ![product-screenshot](./pholoMockup3.png)
 
+Most social media sites make it easy to find photos of a person, but not of a particular location and time. This site allows you to quickly find photos taken in 1954 at Disneyland, or view the Las Vegas Strip back in the 60's. 
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`JHorst2020`, `PhoLo`, `twitter_handle`, `jerzyhorst@gmail.com`, `project_title`, `project_description`
+Most newer cameras include EXIF data which contain the date and location that a photo was taken. When a user uploads a photo, this information is collected automatically and stored with the photo. In the event that no such EXIF data exists, a user can provide the missing details. Other users can then search for these images by simply entering a date range, and the name of a location. 
 
 
-### Built With
 
-* []()
-* []()
-* []()
+### Notable Technologies
+A. Backend
+* [Node.js](https://nodejs.org/en/)
+* [Express](https://expressjs.com/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Sequelize](https://sequelize.org/)
+* [Amazon AWS S3 Bucket Hosting SDK](https://aws.amazon.com/s3/)
+* [GoogleMap API](https://developers.google.com/maps/documentation)
+* [JSON](https://www.json.org/json-en.html)
+B. Frontend
+* [React](http://reactjs.org/)
+* [Redux](https://redux.js.org/)
+
+
+<!--ReactSkipperEnd -->
 
 
 
@@ -130,11 +140,10 @@ This is an example of how to list things you need to use the software and how to
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+<!-- ## Usage -->
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+<!-- Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources. -->
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
